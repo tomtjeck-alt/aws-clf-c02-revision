@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Préparation AWS Cloud Practitioner (CLF-C02)</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--ink:#1d2330;--mute:#5b6475;--line:#e2e5ea;--acc:#c46a00;--accbg:#fff4e5;--ok:#1f7a3a;--okbg:#e8f6ec;--ko:#b3261e;--kobg:#fdecea;--blue:#1f4e9e;--bluebg:#eaf1fc}
+@media (prefers-color-scheme:dark){:root{--bg:#14171c;--card:#1d2128;--ink:#e8eaee;--mute:#9aa3b2;--line:#2e343e;--acc:#ffb347;--accbg:#2e2414;--ok:#6fd38f;--okbg:#16281c;--ko:#ff8a80;--kobg:#2e1a19;--blue:#8db4ff;--bluebg:#18233a}}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink)}
+header{background:var(--card);border-bottom:1px solid var(--line);padding:18px 20px 0;position:sticky;top:0;z-index:5}
+h1{font-size:1.25rem;margin:0 0 4px}
+.sub{color:var(--mute);font-size:.9rem;margin:0 0 12px}
+nav{display:flex;gap:4px;flex-wrap:wrap}
+nav button{border:0;background:none;padding:10px 14px;font:inherit;color:var(--mute);cursor:pointer;border-bottom:3px solid transparent}
+nav button.on{color:var(--ink);border-bottom-color:var(--acc);font-weight:600}
+main{max-width:900px;margin:0 auto;padding:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin-bottom:16px}
+h2{font-size:1.15rem;margin:0 0 10px}
+h3{font-size:1rem;margin:18px 0 6px;color:var(--blue)}
+h4{font-size:.95rem;margin:14px 0 4px}
+.lvl{border-left:5px solid;padding-left:14px}
+.l0{border-left-color:#2e9d57}.l1{border-left-color:#d9a400}.l2{border-left-color:#c0392b}
+.chl{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.chl a{display:block;padding:12px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);text-decoration:none}
+.chl a:hover{border-color:var(--acc)}
+.chl .ok{color:var(--ok);font-weight:700}
+.tw{overflow-x:auto}
+.qb{border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin:10px 0}
+.qb ol{margin:6px 0 0;padding-left:22px}.qb li{margin:3px 0}
+.qb li.g{color:var(--ok);font-weight:600}
+.qb details{margin-top:8px}.qb summary{cursor:pointer;color:var(--blue);font-weight:600}
+.qb .ex{margin:4px 0}
+
+.tg{border-collapse:collapse;font-size:.85rem}
+.tg td,.tg th{border:1px solid var(--line);padding:4px 6px;text-align:center;white-space:nowrap}
+.tg td.t{text-align:left;white-space:normal;min-width:170px}
+.c0{color:var(--mute)}.cg{background:var(--okbg);color:var(--ok);font-weight:700}.cm{background:var(--accbg);color:var(--acc);font-weight:700}.cb{background:var(--kobg);color:var(--ko);font-weight:700}
+.me{color:var(--acc)}
+a.btn{text-decoration:none;display:inline-block}
+a{color:var(--blue)}
+code{background:var(--bg);padding:1px 5px;border-radius:4px}
+figure.dg{margin:14px 0 22px}
+figure.dg svg{display:block;width:100%;height:auto;color:var(--ink);font-family:inherit}
+figure.dg figcaption{color:var(--mute);font-size:.88rem;margin-top:6px;border-top:1px solid var(--line);padding-top:6px}
+table{border-collapse:collapse;width:100%;font-size:.93rem;margin:6px 0}
+th,td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{background:var(--bg)}
+.tip{background:var(--accbg);border-left:4px solid var(--acc);padding:10px 12px;border-radius:6px;margin:10px 0;font-size:.94rem}
+.pill{display:inline-block;background:var(--bluebg);color:var(--blue);border-radius:99px;padding:1px 9px;font-size:.8rem;font-weight:600}
+.btn{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:9px 14px;border-radius:8px;font:inherit;cursor:pointer}
+.btn.p{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:600}
+@media (prefers-color-scheme:dark){.btn.p{color:#1d1300}}
+.btn:disabled{opacity:.45;cursor:default}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.opt{display:block;width:100%;text-align:left;margin:8px 0;padding:11px 13px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);font:inherit;cursor:pointer}
+.opt.sel{border-color:var(--blue);background:var(--bluebg)}
+.opt.good{border-color:var(--ok);background:var(--okbg)}
+.opt.bad{border-color:var(--ko);background:var(--kobg)}
+.ex{font-size:.92rem;margin-top:6px;color:var(--ink)}
+.ex b.g{color:var(--ok)} .ex b.r{color:var(--ko)}
+.verdict{font-weight:700;font-size:1.05rem;margin:12px 0 4px}
+.verdict.g{color:var(--ok)} .verdict.r{color:var(--ko)}
+.bar{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin:6px 0 14px}
+.bar i{display:block;height:100%;background:var(--acc)}
+.mute{color:var(--mute);font-size:.9rem}
+ul{padding-left:20px;margin:6px 0} li{margin:3px 0}
+.fc{min-height:150px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:1.1rem;cursor:pointer;user-select:none}
+select{font:inherit;padding:8px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+.chk li{list-style:none;margin-left:-20px}
+</style>
+</head>
+<body>
+<header>
+  <h1>AWS Certified Cloud Practitioner — CLF-C02</h1>
+  <p class="sub">Fiches · flashcards · examen blanc avec explication de chaque choix</p>
+  <nav id="nav">
+    <button data-v="cours">📚 Cours (29 chapitres)</button>
+    <button data-v="plan">Plan & examen</button>
+    <button data-v="d1">1 · Concepts cloud</button>
+    <button data-v="d2">2 · Sécurité</button>
+    <button data-v="d3">3 · Technologies</button>
+    <button data-v="d4">4 · Facturation</button>
+    <button data-v="pieges">Pièges</button>
+    <button data-v="flash">Flashcards</button>
+    <button data-v="toutes">📝 Questions (1 par page)</button>
+    <button data-v="quiz">Examen blanc</button>
+    <button data-v="equipe">👥 Progression partagée</button>
+  </nav>
+</header>
+<main id="app"></main>
+<script src="ch1.js"></script>
+<script src="ch2.js"></script>
+<script src="ch3.js"></script>
+<script src="qx1.js"></script>
+<script src="qx2.js"></script>
+<script src="qx3.js"></script>
+<script src="diag.js"></script>
+<script>
+/* ============ FICHES ============ */
+const V = {};
+V.plan = `
+<div class="card"><h2>L’examen en bref</h2>
+<table>
+<tr><th>Format</th><td>65 questions (50 notées + 15 non notées, impossibles à distinguer) · QCM à 1 réponse ou à réponses multiples</td></tr>
+<tr><th>Durée</th><td>90 minutes (~1 min 20 par question). Demandez l’aménagement <b>ESL +30 min</b> si l’anglais n’est pas votre langue maternelle (à faire <i>avant</i> de réserver, dans votre compte de certification).</td></tr>
+<tr><th>Réussite</th><td>700 / 1000 (score pondéré). Aucune pénalité pour une mauvaise réponse → <b>ne laissez jamais de blanc</b>.</td></tr>
+<tr><th>Coût / lieu</th><td>~100 USD · centre Pearson VUE ou en ligne (OnVUE) · disponible en français.</td></tr>
+</table></div>
+<div class="card"><h2>Les 4 domaines</h2>
+<table>
+<tr><th>Domaine</th><th>Poids</th><th>Ce qu’on teste</th></tr>
+<tr><td>1. Concepts du cloud</td><td>24 %</td><td>Avantages du cloud, Well-Architected, CAF, migration, économie du cloud</td></tr>
+<tr><td>2. Sécurité et conformité</td><td>30 %</td><td>Responsabilité partagée, IAM, services de sécurité, conformité</td></tr>
+<tr><td>3. Technologies et services</td><td>34 %</td><td>Infra mondiale, calcul, stockage, BD, réseau, IA/analytique, déploiement</td></tr>
+<tr><td>4. Facturation, tarifs et support</td><td>12 %</td><td>Modèles de prix, outils de coûts, plans de support, ressources</td></tr>
+</table>
+<div class="tip">Le domaine 3 + 2 = <b>64 %</b> de l’examen. Si votre temps est limité, priorisez-les. L’examen teste surtout « <i>quel service pour quel besoin</i> » — pas la configuration.</div></div>
+<div class="card"><h2>Plan de 14 jours (1–2 h/jour)</h2>
+<table>
+<tr><th>Jours</th><th>À faire</th></tr>
+<tr><td>1–2</td><td>Fiche 1 (Concepts cloud) + flashcards du domaine 1</td></tr>
+<tr><td>3–5</td><td>Fiche 2 (Sécurité) — maîtriser parfaitement la responsabilité partagée et les services de sécurité</td></tr>
+<tr><td>6–9</td><td>Fiche 3 (Technologies) — un bloc par jour : calcul/stockage, BD/réseau, analytique/IA, infra mondiale/déploiement</td></tr>
+<tr><td>10</td><td>Fiche 4 (Facturation + support) + onglet Pièges</td></tr>
+<tr><td>11</td><td>Examen blanc complet ici. Relire les explications de <b>toutes</b> les erreurs</td></tr>
+<tr><td>12–13</td><td>Questions officielles gratuites : <a href="https://skillbuilder.aws/" target="_blank" rel="noopener">AWS Skill Builder</a> (« Official Practice Question Set CLF-C02 ») + cours « Cloud Practitioner Essentials » (gratuit)</td></tr>
+<tr><td>14</td><td>Flashcards + Pièges seulement. Dormir. Viser ≥ 80 % aux examens blancs avant d’y aller.</td></tr>
+</table>
+<div class="tip">Référence officielle : le <a href="https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02.html" target="_blank" rel="noopener">guide d’examen CLF-C02</a> liste les services « dans le périmètre ». AWS fait évoluer ses offres (ex. Free Tier, plans de support) : vérifiez-y tout détail chiffré avant l’examen.</div></div>
+<div class="card"><h2>Technique le jour J</h2><ul>
+<li>Repérez le <b>mot-clé du besoin</b> : « le moins d’effort opérationnel » → service managé/serverless ; « le moins cher » → Spot / S3 Glacier / Savings Plans ; « qui a fait quoi » → CloudTrail.</li>
+<li>Éliminez d’abord les 2 réponses absurdes, puis comparez les 2 restantes.</li>
+<li>« Choisissez DEUX » : il faut les deux bonnes, pas de point partiel.</li>
+<li>Marquez les questions douteuses (« Flag ») et revenez-y à la fin.</li></ul></div>`;
+
+V.d1 = `
+<div class="card"><h2>Domaine 1 · Concepts du cloud <span class="pill">24 %</span></h2>
+<h3>Le cloud computing</h3>
+<p>Fourniture <b>à la demande</b> de ressources informatiques via Internet, avec <b>paiement à l’usage</b>.</p>
+<table><tr><th>Modèle de service</th><th>Vous gérez</th><th>Exemple AWS</th></tr>
+<tr><td>IaaS (infrastructure)</td><td>OS, applis, données</td><td>EC2, VPC, EBS</td></tr>
+<tr><td>PaaS (plateforme)</td><td>Code et données seulement</td><td>Elastic Beanstalk, RDS</td></tr>
+<tr><td>SaaS (logiciel)</td><td>Rien : vous utilisez</td><td>Amazon WorkMail, Gmail</td></tr></table>
+<table><tr><th>Modèle de déploiement</th><th>Description</th></tr>
+<tr><td>Cloud (tout dans le cloud)</td><td>Tout sur AWS</td></tr>
+<tr><td>Hybride</td><td>Sur site + cloud connectés (ex. Direct Connect, Storage Gateway, Outposts)</td></tr>
+<tr><td>Sur site / cloud privé</td><td>Votre propre datacenter, virtualisé</td></tr></table>
+
+<h3>Les 6 avantages du cloud (à connaître par cœur)</h3><ol>
+<li><b>Remplacer les dépenses d’investissement (CapEx) par des dépenses variables (OpEx)</b> — payer seulement ce qu’on consomme.</li>
+<li><b>Bénéficier d’économies d’échelle massives</b> — AWS achète en gros → prix plus bas.</li>
+<li><b>Arrêter de deviner la capacité</b> — on ajuste à la hausse/baisse.</li>
+<li><b>Augmenter la vitesse et l’agilité</b> — ressources en minutes.</li>
+<li><b>Arrêter de dépenser pour faire fonctionner des datacenters</b> — se concentrer sur ses clients.</li>
+<li><b>Devenir mondial en quelques minutes</b> — régions partout.</li></ol>
+<table><tr><th>Terme</th><th>Sens</th></tr>
+<tr><td>Élasticité</td><td>Ajuster automatiquement les ressources à la demande (Auto Scaling)</td></tr>
+<tr><td>Scalabilité</td><td>Capacité à grandir. <i>Verticale</i> = plus grosse machine ; <i>horizontale</i> = plus de machines</td></tr>
+<tr><td>Haute disponibilité</td><td>Fonctionner malgré une panne : plusieurs <b>zones de disponibilité</b></td></tr>
+<tr><td>Tolérance aux pannes</td><td>Continuer sans interruption même si un composant tombe</td></tr>
+<tr><td>Agilité</td><td>Expérimenter vite et à faible coût</td></tr></table>
+
+<h3>AWS Well-Architected Framework — 6 piliers</h3>
+<table><tr><th>Pilier</th><th>Idée-clé</th></tr>
+<tr><td>Excellence opérationnelle</td><td>Exécuter et surveiller ; automatiser ; petits changements fréquents et réversibles ; infrastructure as code</td></tr>
+<tr><td>Sécurité</td><td>Protéger données et systèmes ; traçabilité ; moindre privilège ; chiffrer</td></tr>
+<tr><td>Fiabilité</td><td>Se rétablir d’une panne ; multi-AZ ; scaler horizontalement ; tester la récupération</td></tr>
+<tr><td>Efficacité des performances</td><td>Bon type/taille de ressource ; serverless ; global en minutes ; expérimenter</td></tr>
+<tr><td>Optimisation des coûts</td><td>Éviter le gaspillage ; payer à l’usage ; mesurer l’efficacité</td></tr>
+<tr><td>Durabilité</td><td>Minimiser l’impact environnemental ; maximiser l’utilisation</td></tr></table>
+<div class="tip">Moyen mnémotechnique : <b>« O-S-F-P-C-D »</b>. L’outil <b>AWS Well-Architected Tool</b> (console) évalue gratuitement une charge de travail selon ces piliers.</div>
+
+<h3>AWS Cloud Adoption Framework (CAF) — 6 perspectives</h3>
+<table><tr><th>Capacités métier</th><th>Capacités techniques</th></tr>
+<tr><td><b>Business</b> (stratégie, ROI) · <b>People</b> (culture, compétences, formation) · <b>Governance</b> (risques, budgets, gestion de programme)</td><td><b>Platform</b> (architecture, infra) · <b>Security</b> (IAM, détection, protection) · <b>Operations</b> (surveillance, incidents, continuité)</td></tr></table>
+<p class="mute">Bénéfices du CAF : réduction des risques métier, amélioration ESG, croissance des revenus, efficacité opérationnelle. Phases : Envision → Align → Launch → Scale.</p>
+
+<h3>Stratégies de migration — les 7 R</h3>
+<table><tr><th>R</th><th>Signification</th></tr>
+<tr><td>Rehost</td><td>« Lift and shift » : déplacer tel quel (ex. vers EC2) — <i>AWS Application Migration Service</i></td></tr>
+<tr><td>Replatform</td><td>« Lift, tinker and shift » : petite optimisation (ex. BD → RDS)</td></tr>
+<tr><td>Refactor / Re-architect</td><td>Réécrire en cloud-native (serverless, microservices)</td></tr>
+<tr><td>Repurchase</td><td>« Drop and shop » : passer à un SaaS</td></tr>
+<tr><td>Relocate</td><td>Déplacer un environnement VMware vers VMware Cloud on AWS</td></tr>
+<tr><td>Retain</td><td>Garder sur site pour l’instant</td></tr>
+<tr><td>Retire</td><td>Supprimer ce qui ne sert plus</td></tr></table>
+<p><b>Outils de migration</b> : AWS Migration Hub (suivi), Application Migration Service (serveurs), Database Migration Service — <b>DMS</b> (BD, source reste active ; avec <i>Schema Conversion Tool</i> pour changer de moteur), <b>Snow Family</b> (Snowcone, Snowball Edge : transfert physique de téraoctets/pétaoctets quand le réseau est trop lent), DataSync (transfert en ligne), Transfer Family (SFTP).</p>
+
+<h3>Économie du cloud</h3><ul>
+<li><b>Coûts fixes</b> (sur site : serveurs, locaux, électricité) vs <b>coûts variables</b> (cloud).</li>
+<li>Coûts cachés sur site : refroidissement, sécurité physique, personnel, licences.</li>
+<li><b>Rightsizing</b> = choisir la bonne taille d’instance (outil : Compute Optimizer).</li>
+<li>Licences : <b>BYOL</b> (apporter vos licences) ou licences incluses. Licences par socket/cœur → <b>Dedicated Hosts</b>.</li>
+<li>Automatisation (CloudFormation) et services managés → moins de personnel d’exploitation.</li></ul>
+</div>`;
+
+V.d2 = `
+<div class="card"><h2>Domaine 2 · Sécurité et conformité <span class="pill">30 %</span></h2>
+<h3>Modèle de responsabilité partagée ⭐⭐⭐</h3>
+<table><tr><th>AWS : sécurité <u>DU</u> cloud</th><th>Client : sécurité <u>DANS</u> le cloud</th></tr>
+<tr><td>Matériel, datacenters, sécurité physique, réseau global, hyperviseur, infrastructure des régions/AZ/edge, logiciels des services managés</td><td>Données (et leur chiffrement), IAM (utilisateurs, permissions, MFA), OS invité d’EC2 (correctifs !), applications, configuration des security groups, chiffrement côté client, trafic réseau</td></tr></table>
+<p><b>Ça varie selon le service</b> :</p><ul>
+<li><b>EC2</b> (IaaS) : le client patche l’OS et le logiciel.</li>
+<li><b>RDS</b> : AWS patche l’OS et le moteur BD ; le client gère les accès, données, sauvegardes configurées.</li>
+<li><b>Lambda, S3, DynamoDB</b> : AWS gère presque tout ; le client gère code, données, permissions.</li></ul>
+<p><b>Contrôles partagés</b> : gestion des correctifs, gestion de la configuration, sensibilisation et formation (chacun pour sa couche). <b>Contrôles hérités</b> : contrôles physiques et environnementaux (100 % AWS).</p>
+
+<h3>IAM (Identity and Access Management) — global, gratuit</h3>
+<table><tr><th>Élément</th><th>Rôle</th></tr>
+<tr><td>Utilisateur root</td><td>Créé avec le compte, accès total. Activer <b>MFA</b>, ne pas l’utiliser au quotidien, pas de clés d’accès.</td></tr>
+<tr><td>Utilisateur IAM</td><td>Une personne ou application, identifiants à long terme</td></tr>
+<tr><td>Groupe</td><td>Ensemble d’utilisateurs qui partagent des permissions (pas de groupes imbriqués)</td></tr>
+<tr><td>Rôle</td><td>Identité <b>temporaire</b> endossée par un service (ex. EC2 → S3), un autre compte ou un utilisateur fédéré. Meilleure pratique plutôt que des clés dans le code.</td></tr>
+<tr><td>Politique (policy)</td><td>Document JSON qui autorise/refuse des actions. Un <i>Deny</i> explicite l’emporte toujours.</td></tr></table>
+<p><b>Tâches réservées au root</b> : changer les paramètres du compte (email, nom, mot de passe root), changer de <b>plan de support</b>, <b>fermer le compte</b>, restaurer les permissions d’un admin IAM, s’inscrire comme vendeur Marketplace, certains réglages de facturation.</p>
+<p><b>Principes</b> : moindre privilège · MFA · rotation des identifiants · politique de mots de passe · <b>IAM Access Analyzer</b> (accès externes) · <b>IAM Identity Center</b> (ex-SSO : connexion unique à plusieurs comptes) · clés d’accès = CLI/SDK.</p>
+
+<h3>Multi-comptes</h3><ul>
+<li><b>AWS Organizations</b> : gérer plusieurs comptes, <b>facturation consolidée</b> (une facture, remises de volume partagées), <b>SCP</b> (Service Control Policies : limite maximale de permissions d’un compte, même pour le root du compte membre), OU (unités d’organisation).</li>
+<li><b>AWS Control Tower</b> : met en place une <i>landing zone</i> multi-comptes sécurisée selon les bonnes pratiques.</li>
+<li><b>AWS RAM</b> : partager des ressources entre comptes.</li></ul>
+
+<h3>Services de sécurité — « quel service pour quel besoin »</h3>
+<table><tr><th>Service</th><th>À retenir</th></tr>
+<tr><td><b>GuardDuty</b></td><td>Détection intelligente de <b>menaces</b> (ML) à partir de CloudTrail, VPC Flow Logs, DNS. Comportements malveillants.</td></tr>
+<tr><td><b>Inspector</b></td><td>Scan automatique de <b>vulnérabilités</b> (CVE) sur EC2, images ECR, Lambda.</td></tr>
+<tr><td><b>Macie</b></td><td>Découvre les <b>données sensibles (PII)</b> dans <b>S3</b> par ML.</td></tr>
+<tr><td><b>Detective</b></td><td><b>Enquête</b> sur la cause racine d’un incident de sécurité.</td></tr>
+<tr><td><b>Security Hub</b></td><td>Tableau de bord <b>centralisé</b> des alertes de sécurité + contrôles de conformité.</td></tr>
+<tr><td><b>Shield</b></td><td>Protection <b>DDoS</b>. Standard = gratuit et automatique. Advanced = payant, équipe de réponse DDoS (SRT) 24/7, protection des coûts.</td></tr>
+<tr><td><b>WAF</b></td><td>Pare-feu applicatif web (couche 7) : bloque <b>injection SQL, XSS</b>, IP, géo. Sur CloudFront, ALB, API Gateway.</td></tr>
+<tr><td><b>Firewall Manager</b></td><td>Gérer les règles WAF/Shield/SG sur toute l’organisation.</td></tr>
+<tr><td><b>Network Firewall</b></td><td>Pare-feu réseau managé pour le VPC.</td></tr>
+<tr><td><b>KMS</b></td><td>Créer/gérer des <b>clés de chiffrement</b> (multi-locataire, intégré aux services).</td></tr>
+<tr><td><b>CloudHSM</b></td><td>Module matériel (HSM) <b>dédié</b>, mono-locataire, vous contrôlez les clés (FIPS 140-2/3 niveau 3).</td></tr>
+<tr><td><b>Secrets Manager</b></td><td>Stocker des secrets (mots de passe BD) avec <b>rotation automatique</b>. (Parameter Store = alternative simple sans rotation native.)</td></tr>
+<tr><td><b>ACM</b></td><td>Certificats <b>SSL/TLS</b> gratuits (chiffrement en transit, HTTPS).</td></tr>
+<tr><td><b>Cognito</b></td><td>Inscription/connexion des <b>utilisateurs d’applis web et mobiles</b> (Google, Facebook…).</td></tr>
+<tr><td><b>Artifact</b></td><td>Télécharger les <b>rapports de conformité</b> d’AWS (SOC, PCI, ISO) et accepter des accords (BAA HIPAA).</td></tr>
+<tr><td><b>Audit Manager</b></td><td>Collecter des preuves pour <b>vos</b> audits.</td></tr>
+<tr><td><b>Config</b></td><td><b>Historique de configuration</b> des ressources + règles de conformité (« ce bucket est-il public ? »).</td></tr>
+<tr><td><b>CloudTrail</b></td><td>Journal des <b>appels API</b> : <b>qui</b> a fait <b>quoi</b>, <b>quand</b>, d’où. Audit.</td></tr>
+<tr><td><b>CloudWatch</b></td><td><b>Métriques</b>, logs, <b>alarmes</b>, tableaux de bord (performance, CPU).</td></tr>
+<tr><td><b>Trusted Advisor</b></td><td>Recommandations : coûts, performance, sécurité, tolérance aux pannes, limites de service, excellence opérationnelle.</td></tr></table>
+
+<h3>Réseau : Security Group vs Network ACL</h3>
+<table><tr><th></th><th>Security Group</th><th>Network ACL</th></tr>
+<tr><td>Niveau</td><td>Instance (ENI)</td><td>Sous-réseau</td></tr>
+<tr><td>État</td><td><b>Stateful</b> (retour automatique autorisé)</td><td><b>Stateless</b> (règles entrée ET sortie)</td></tr>
+<tr><td>Règles</td><td>Autoriser seulement</td><td>Autoriser et refuser</td></tr></table>
+
+<h3>Conformité et ressources</h3><ul>
+<li>Chiffrement <b>au repos</b> (KMS, S3 SSE) et <b>en transit</b> (TLS/ACM).</li>
+<li><b>AWS Compliance Center / Programmes de conformité</b>, <b>Artifact</b> pour les rapports.</li>
+<li><b>Équipe AWS Trust & Safety</b> (ex-Abuse) : signaler un abus provenant de ressources AWS (spam, attaque).</li>
+<li>Tests d’intrusion : autorisés sans approbation sur une liste de services ; DDoS simulé interdit sans accord.</li>
+<li><b>AWS Security Blog, Knowledge Center, re:Post</b> : ressources d’information.</li></ul>
+</div>`;
+
+V.d3 = `
+<div class="card"><h2>Domaine 3 · Technologies et services <span class="pill">34 %</span></h2>
+<h3>Infrastructure mondiale</h3>
+<table><tr><th>Élément</th><th>À retenir</th></tr>
+<tr><td><b>Région</b></td><td>Zone géographique avec plusieurs AZ. Choisir selon : <b>conformité/souveraineté des données</b>, <b>latence</b> (proximité clients), <b>services disponibles</b>, <b>prix</b>.</td></tr>
+<tr><td><b>Zone de disponibilité (AZ)</b></td><td>1+ datacenters isolés (alimentation, réseau), reliés à faible latence. Généralement 3+ par région. Multi-AZ = haute disponibilité.</td></tr>
+<tr><td><b>Edge locations</b></td><td>Points de présence pour <b>CloudFront</b> (cache CDN), Route 53, Global Accelerator. Plus nombreux que les régions.</td></tr>
+<tr><td><b>Local Zones</b></td><td>Extension d’une région près d’une grande ville (latence ms à un chiffre).</td></tr>
+<tr><td><b>Wavelength</b></td><td>Infra AWS dans les réseaux <b>5G</b> des opérateurs.</td></tr>
+<tr><td><b>Outposts</b></td><td>Racks AWS installés <b>dans votre datacenter</b> (hybride).</td></tr></table>
+
+<h3>Calcul</h3>
+<table><tr><th>Service</th><th>À retenir</th></tr>
+<tr><td><b>EC2</b></td><td>Serveurs virtuels (IaaS). Familles : usage général, optimisé calcul, optimisé mémoire, optimisé stockage, calcul accéléré (GPU). AMI = image de départ.</td></tr>
+<tr><td><b>EC2 Auto Scaling</b></td><td>Ajoute/retire des instances selon la charge (élasticité).</td></tr>
+<tr><td><b>Elastic Load Balancing</b></td><td>Répartit le trafic. ALB (HTTP, couche 7), NLB (TCP/UDP, couche 4, ultra-perf), GWLB (appliances).</td></tr>
+<tr><td><b>Lambda</b></td><td><b>Serverless</b> : exécute du code sur événement, paie à la milliseconde, max 15 min.</td></tr>
+<tr><td><b>ECS / EKS</b></td><td>Orchestration de conteneurs Docker (ECS = AWS ; EKS = <b>Kubernetes</b>).</td></tr>
+<tr><td><b>Fargate</b></td><td>Conteneurs <b>serverless</b> (pas de serveurs à gérer) pour ECS/EKS.</td></tr>
+<tr><td><b>ECR</b></td><td>Registre d’images de conteneurs.</td></tr>
+<tr><td><b>Elastic Beanstalk</b></td><td>PaaS : déposez votre code, AWS provisionne (EC2, ELB, Auto Scaling).</td></tr>
+<tr><td><b>Lightsail</b></td><td>Serveur privé virtuel <b>simple, prix fixe</b> mensuel (sites WordPress, petites applis).</td></tr>
+<tr><td><b>AWS Batch</b></td><td>Traitements par lots à grande échelle.</td></tr></table>
+
+<h3>Stockage</h3>
+<table><tr><th>Service</th><th>Type</th><th>À retenir</th></tr>
+<tr><td><b>S3</b></td><td>Objet</td><td>Illimité, durabilité 99,999999999 % (11 neuf), buckets, sites statiques, versioning, cycle de vie</td></tr>
+<tr><td><b>EBS</b></td><td>Bloc</td><td>« Disque dur » d’une instance EC2, dans <b>une AZ</b>, snapshots vers S3</td></tr>
+<tr><td><b>Instance Store</b></td><td>Bloc</td><td>Disque physique éphémère : <b>perdu à l’arrêt</b>, très rapide</td></tr>
+<tr><td><b>EFS</b></td><td>Fichiers</td><td>NFS <b>Linux</b>, partagé par plusieurs instances, multi-AZ, élastique</td></tr>
+<tr><td><b>FSx</b></td><td>Fichiers</td><td>FSx for <b>Windows</b> File Server (SMB), FSx for Lustre (HPC), NetApp ONTAP, OpenZFS</td></tr>
+<tr><td><b>Storage Gateway</b></td><td>Hybride</td><td>Relier le sur-site au stockage AWS (fichier, volume, bande)</td></tr>
+<tr><td><b>AWS Backup</b></td><td>—</td><td>Sauvegardes centralisées multi-services</td></tr></table>
+<p><b>Classes S3</b> (du plus cher/rapide au moins cher/lent) :</p>
+<table><tr><th>Classe</th><th>Usage</th></tr>
+<tr><td>S3 Standard</td><td>Accès fréquent</td></tr>
+<tr><td>S3 Intelligent-Tiering</td><td>Accès <b>imprévisible</b> : déplace automatiquement</td></tr>
+<tr><td>S3 Standard-IA</td><td>Accès peu fréquent mais rapide quand nécessaire</td></tr>
+<tr><td>S3 One Zone-IA</td><td>Peu fréquent, données recréables (1 seule AZ)</td></tr>
+<tr><td>S3 Glacier Instant Retrieval</td><td>Archive consultée ~1×/trimestre, accès en ms</td></tr>
+<tr><td>S3 Glacier Flexible Retrieval</td><td>Archive, récupération minutes à heures</td></tr>
+<tr><td>S3 Glacier Deep Archive</td><td><b>Le moins cher</b>, récupération en 12–48 h (conservation 7–10 ans)</td></tr></table>
+
+<h3>Bases de données</h3>
+<table><tr><th>Service</th><th>À retenir</th></tr>
+<tr><td><b>RDS</b></td><td>Relationnelle (SQL) managée : MySQL, PostgreSQL, MariaDB, Oracle, SQL Server, Db2. Multi-AZ (dispo) et réplicas en lecture (perf).</td></tr>
+<tr><td><b>Aurora</b></td><td>Relationnelle AWS compatible MySQL/PostgreSQL, plus performante ; <i>Aurora Serverless</i>.</td></tr>
+<tr><td><b>DynamoDB</b></td><td><b>NoSQL</b> clé-valeur, serverless, latence en millisecondes à toute échelle. DAX = cache.</td></tr>
+<tr><td><b>ElastiCache</b> / MemoryDB</td><td>Cache en mémoire (Redis/Valkey, Memcached).</td></tr>
+<tr><td><b>Redshift</b></td><td><b>Entrepôt de données</b> (data warehouse), analytique OLAP.</td></tr>
+<tr><td><b>DocumentDB</b></td><td>Documents, compatible <b>MongoDB</b>.</td></tr>
+<tr><td><b>Neptune</b></td><td>Base de données <b>graphe</b> (réseaux sociaux, recommandations).</td></tr>
+<tr><td><b>Keyspaces</b></td><td>Compatible <b>Cassandra</b>.</td></tr>
+<tr><td><b>Timestream</b></td><td>Séries temporelles (IoT).</td></tr></table>
+<div class="tip">BD sur EC2 = vous gérez tout (OS, patchs, sauvegardes). BD sur RDS = AWS gère ces tâches. Question « moins d’effort » → RDS/Aurora/DynamoDB.</div>
+
+<h3>Réseau et diffusion de contenu</h3>
+<table><tr><th>Service</th><th>À retenir</th></tr>
+<tr><td><b>VPC</b></td><td>Votre réseau privé isolé. Sous-réseaux <b>publics</b> (route vers Internet Gateway) et <b>privés</b>.</td></tr>
+<tr><td>Internet Gateway</td><td>Connecte le VPC à Internet.</td></tr>
+<tr><td>NAT Gateway</td><td>Instances privées → sortie Internet (sans entrée).</td></tr>
+<tr><td><b>Site-to-Site VPN</b></td><td>Tunnel chiffré <b>via Internet</b> vers votre site. Rapide à mettre en place.</td></tr>
+<tr><td><b>Direct Connect</b></td><td>Connexion <b>physique dédiée privée</b> (pas Internet) : bande passante constante, plus long à installer.</td></tr>
+<tr><td>Transit Gateway</td><td>Hub central pour relier de nombreux VPC et réseaux sur site.</td></tr>
+<tr><td>VPC Peering / PrivateLink</td><td>Relier 2 VPC / accès privé à un service sans Internet.</td></tr>
+<tr><td><b>Route 53</b></td><td><b>DNS</b> managé, enregistrement de domaines, routage (latence, géolocalisation, basculement), health checks.</td></tr>
+<tr><td><b>CloudFront</b></td><td><b>CDN</b> : met en cache le contenu aux edge locations → faible latence mondiale.</td></tr>
+<tr><td>Global Accelerator</td><td>Améliore perf/dispo via le réseau AWS mondial (IP anycast), pas de cache.</td></tr>
+<tr><td>API Gateway</td><td>Créer/gérer des API (souvent avec Lambda).</td></tr></table>
+
+<h3>Analytique</h3>
+<table><tr><td><b>Athena</b></td><td>Requêtes <b>SQL directement sur S3</b>, serverless</td></tr>
+<tr><td><b>Glue</b></td><td>ETL serverless + catalogue de données</td></tr>
+<tr><td><b>EMR</b></td><td>Big data : Hadoop, Spark</td></tr>
+<tr><td><b>Kinesis</b></td><td>Données en <b>streaming temps réel</b> (Data Streams, Data Firehose)</td></tr>
+<tr><td><b>QuickSight</b></td><td>Tableaux de bord <b>BI</b> / visualisation</td></tr>
+<tr><td><b>OpenSearch</b></td><td>Recherche et analyse de logs</td></tr>
+<tr><td><b>MSK</b></td><td>Apache Kafka managé</td></tr></table>
+
+<h3>IA / Machine Learning</h3>
+<table><tr><td><b>SageMaker AI</b></td><td>Construire, entraîner, déployer <b>vos</b> modèles ML</td></tr>
+<tr><td><b>Bedrock</b></td><td>IA <b>générative</b> : accès par API à des modèles de fondation (Claude, Llama, Titan/Nova…)</td></tr>
+<tr><td><b>Amazon Q</b></td><td>Assistant IA générative (Q Business pour l’entreprise, Q Developer pour le code)</td></tr>
+<tr><td><b>Rekognition</b></td><td>Analyse d’<b>images et vidéos</b> (visages, objets)</td></tr>
+<tr><td><b>Textract</b></td><td>Extraire texte et tableaux de <b>documents scannés</b></td></tr>
+<tr><td><b>Comprehend</b></td><td>NLP : sentiment, entités dans du texte</td></tr>
+<tr><td><b>Transcribe</b></td><td>Parole → texte</td></tr>
+<tr><td><b>Polly</b></td><td>Texte → parole</td></tr>
+<tr><td><b>Translate</b></td><td>Traduction</td></tr>
+<tr><td><b>Lex</b></td><td><b>Chatbots</b> conversationnels (voix/texte)</td></tr>
+<tr><td><b>Kendra</b></td><td>Recherche intelligente dans les documents d’entreprise</td></tr>
+<tr><td><b>Personalize / Forecast</b></td><td>Recommandations / prévisions</td></tr></table>
+
+<h3>Intégration d’applications</h3>
+<table><tr><td><b>SQS</b></td><td><b>File d’attente</b> de messages : découpler des composants (un consommateur traite)</td></tr>
+<tr><td><b>SNS</b></td><td><b>Publication/abonnement</b> : notifications push (email, SMS, plusieurs abonnés)</td></tr>
+<tr><td><b>EventBridge</b></td><td>Bus d’événements, règles planifiées</td></tr>
+<tr><td><b>Step Functions</b></td><td>Orchestrer des workflows (machines d’état)</td></tr></table>
+
+<h3>Déploiement, gestion et outils</h3>
+<table><tr><td><b>CloudFormation</b></td><td><b>Infrastructure as Code</b> (modèles JSON/YAML) ; CDK = en langage de programmation</td></tr>
+<tr><td>Console / CLI / SDK / CloudShell</td><td>Façons d’accéder à AWS (CloudShell = terminal dans le navigateur)</td></tr>
+<tr><td><b>Systems Manager</b></td><td>Gérer une flotte EC2/sur-site : correctifs, Session Manager, Parameter Store</td></tr>
+<tr><td>CodeBuild / CodeDeploy / CodePipeline</td><td>CI/CD (compiler, déployer, pipeline)</td></tr>
+<tr><td>X-Ray</td><td>Traçage des requêtes dans une appli distribuée</td></tr>
+<tr><td><b>AWS Health Dashboard</b></td><td>État des services AWS et événements qui <b>touchent votre compte</b></td></tr></table>
+
+<h3>Autres services souvent cités</h3>
+<table><tr><td>Amazon Connect</td><td>Centre de contacts (call center) cloud</td></tr>
+<tr><td>Amazon SES</td><td>Envoi d’<b>emails</b> en masse</td></tr>
+<tr><td>WorkSpaces / AppStream 2.0</td><td>Bureaux virtuels / streaming d’applications</td></tr>
+<tr><td>IoT Core</td><td>Connecter des objets connectés</td></tr>
+<tr><td>Amplify / AppSync</td><td>Applis web-mobiles full-stack / API GraphQL</td></tr>
+<tr><td>Device Farm</td><td>Tester des applis sur de vrais téléphones</td></tr></table>
+</div>`;
+
+V.d4 = `
+<div class="card"><h2>Domaine 4 · Facturation, tarifs et support <span class="pill">12 %</span></h2>
+<h3>Options d’achat EC2</h3>
+<table><tr><th>Option</th><th>Rabais max.</th><th>Quand l’utiliser</th></tr>
+<tr><td><b>On-Demand</b></td><td>0 %</td><td>Charge courte, imprévisible, sans interruption, tests</td></tr>
+<tr><td><b>Reserved Instances</b></td><td>~72 %</td><td>Charge <b>stable</b>, engagement 1 ou 3 ans sur un type d’instance (paiement total, partiel ou nul d’avance). <i>Convertible</i> = changer de famille.</td></tr>
+<tr><td><b>Savings Plans</b></td><td>~72 %</td><td>Engagement en <b>$/heure</b> sur 1–3 ans. <i>Compute SP</i> = flexible (EC2, Fargate, Lambda, toute région).</td></tr>
+<tr><td><b>Spot</b></td><td>~90 %</td><td>Capacité inutilisée, <b>peut être interrompue</b> (préavis 2 min) : batch, tolérant aux pannes, flexible</td></tr>
+<tr><td><b>Dedicated Hosts</b></td><td>—</td><td>Serveur physique entier pour vous : <b>licences par socket/cœur</b> (BYOL), conformité</td></tr>
+<tr><td>Dedicated Instances</td><td>—</td><td>Matériel non partagé avec d’autres clients (sans visibilité sur le serveur)</td></tr>
+<tr><td>Capacity Reservations</td><td>—</td><td>Garantir de la capacité dans une AZ précise</td></tr></table>
+
+<h3>Principes de tarification</h3><ul>
+<li>3 moteurs de coût : <b>calcul, stockage, transfert de données sortant</b>.</li>
+<li>Transfert <b>entrant</b> vers AWS : gratuit. <b>Sortant</b> vers Internet : payant. Entre AZ / régions : payant.</li>
+<li>Plus on utilise, moins on paie par unité (paliers de volume, ex. S3).</li>
+<li>Services gratuits en eux-mêmes : IAM, VPC, CloudFormation, Elastic Beanstalk, Auto Scaling, Organizations (on paie les ressources créées).</li>
+<li><b>Free Tier</b> : essais gratuits, gratuit 12 mois, toujours gratuit. Depuis juillet 2025 les nouveaux comptes reçoivent plutôt des <b>crédits</b> (plan gratuit) — vérifiez la formulation dans le guide d’examen.</li></ul>
+
+<h3>Outils de facturation et de coûts ⭐⭐</h3>
+<table><tr><th>Outil</th><th>Question typique</th></tr>
+<tr><td><b>AWS Pricing Calculator</b></td><td>« Estimer le coût <b>avant</b> de déployer »</td></tr>
+<tr><td><b>Billing and Cost Management console</b></td><td>Voir et payer les factures</td></tr>
+<tr><td><b>Cost Explorer</b></td><td>« <b>Visualiser</b>/analyser les coûts passés, <b>prévoir</b> les 12 prochains mois », recommandations RI/SP</td></tr>
+<tr><td><b>AWS Budgets</b></td><td>« Recevoir une <b>alerte</b> quand on dépasse (ou va dépasser) un seuil »</td></tr>
+<tr><td><b>Cost and Usage Report (CUR / Data Exports)</b></td><td>Données de facturation <b>les plus détaillées</b>, vers S3, analyse avec Athena</td></tr>
+<tr><td><b>Cost allocation tags</b></td><td>Répartir les coûts par projet/département</td></tr>
+<tr><td>Cost Anomaly Detection</td><td>Détecter des dépenses inhabituelles par ML</td></tr>
+<tr><td>Compute Optimizer</td><td>Rightsizing des instances</td></tr>
+<tr><td>Organizations — facturation consolidée</td><td>Une facture pour tous les comptes + <b>remises de volume cumulées</b></td></tr></table>
+
+<h3>Plans de support (à connaître) ⭐⭐</h3>
+<table><tr><th>Plan</th><th>Points distinctifs</th></tr>
+<tr><td><b>Basic</b> (gratuit)</td><td>Service client (facturation/compte) 24/7, docs, re:Post, Health Dashboard, contrôles Trusted Advisor <b>de base</b>. Pas de support technique.</td></tr>
+<tr><td><b>Developer</b></td><td>Support technique par <b>email</b>, heures ouvrables. Conseils généraux. Système dégradé &lt; 12 h.</td></tr>
+<tr><td><b>Business</b></td><td><b>24/7 téléphone, chat, email</b>. <b>Tous les contrôles Trusted Advisor</b>. Production en panne &lt; <b>1 h</b>. Minimum recommandé pour la production.</td></tr>
+<tr><td><b>Enterprise On-Ramp</b></td><td>Accès à un <b>pool</b> de TAM. Panne critique métier &lt; <b>30 min</b>.</td></tr>
+<tr><td><b>Enterprise</b></td><td><b>TAM dédié</b> (Technical Account Manager), <b>Concierge</b> (facturation), panne critique &lt; <b>15 min</b>, revues Well-Architected, Infrastructure Event Management.</td></tr></table>
+<div class="tip">Mot-clé « <b>TAM</b> » → Enterprise (dédié) ou Enterprise On-Ramp (pool). « <b>15 minutes</b> » → Enterprise. « <b>Tous les contrôles Trusted Advisor</b> au moindre coût » → Business. AWS a annoncé une refonte de ses offres de support en 2025 : l’examen CLF-C02 utilise en général ces noms, mais vérifiez le guide.</div>
+
+<h3>Ressources et partenaires</h3>
+<table><tr><td><b>AWS Marketplace</b></td><td>Catalogue de logiciels tiers prêts à déployer (AMI, SaaS), facturés sur la facture AWS</td></tr>
+<tr><td><b>AWS Partner Network (APN)</b></td><td>Consultants et éditeurs partenaires</td></tr>
+<tr><td><b>AWS Professional Services</b></td><td>Experts AWS pour accompagner un projet</td></tr>
+<tr><td><b>AWS re:Post</b></td><td>Forum de questions-réponses communautaire</td></tr>
+<tr><td><b>Knowledge Center</b></td><td>FAQ des questions fréquentes au support</td></tr>
+<tr><td>Documentation, Whitepapers, Prescriptive Guidance, Solutions Library</td><td>Guides et architectures de référence</td></tr>
+<tr><td><b>AWS Health Dashboard</b></td><td>Événements et maintenances qui touchent vos ressources</td></tr>
+<tr><td>Trust & Safety</td><td>Signaler un abus</td></tr>
+<tr><td>Skill Builder / Training & Certification</td><td>Formation</td></tr></table>
+</div>`;
+
+V.pieges = `
+<div class="card"><h2>Paires que l’examen adore confondre</h2>
+<table><tr><th>Celui-ci…</th><th>…vs celui-là</th></tr>
+<tr><td><b>CloudTrail</b> : qui a appelé quelle API (audit)</td><td><b>CloudWatch</b> : métriques/performances/alarmes</td></tr>
+<tr><td><b>Config</b> : historique et conformité de la <i>configuration</i></td><td><b>CloudTrail</b> : historique des <i>actions</i> (appels API)</td></tr>
+<tr><td><b>GuardDuty</b> : menaces (activité suspecte)</td><td><b>Inspector</b> : vulnérabilités logicielles (CVE)</td></tr>
+<tr><td><b>Macie</b> : données sensibles dans S3</td><td><b>Detective</b> : enquête après incident</td></tr>
+<tr><td><b>Shield</b> : DDoS (couches 3/4 surtout)</td><td><b>WAF</b> : attaques web couche 7 (SQLi, XSS)</td></tr>
+<tr><td><b>KMS</b> : clés gérées, partagé</td><td><b>CloudHSM</b> : matériel dédié, vous seul</td></tr>
+<tr><td><b>Artifact</b> : rapports de conformité d’AWS</td><td><b>Audit Manager</b> : preuves pour vos audits</td></tr>
+<tr><td><b>Cognito</b> : utilisateurs de vos applis</td><td><b>IAM / Identity Center</b> : employés qui accèdent à AWS</td></tr>
+<tr><td><b>SQS</b> : file (pull, découplage)</td><td><b>SNS</b> : notifications (push, plusieurs abonnés)</td></tr>
+<tr><td><b>EBS</b> : bloc, 1 instance, 1 AZ</td><td><b>EFS</b> : fichiers partagés, multi-instances, multi-AZ</td></tr>
+<tr><td><b>RDS</b> : SQL transactionnel (OLTP)</td><td><b>Redshift</b> : entrepôt analytique (OLAP)</td></tr>
+<tr><td><b>DynamoDB</b> : NoSQL</td><td><b>RDS / Aurora</b> : relationnel</td></tr>
+<tr><td><b>VPN</b> : chiffré via Internet, rapide à installer</td><td><b>Direct Connect</b> : lien privé dédié, constant</td></tr>
+<tr><td><b>CloudFront</b> : CDN, cache</td><td><b>Global Accelerator</b> : routage réseau, pas de cache</td></tr>
+<tr><td><b>Security Group</b> : instance, stateful, allow</td><td><b>NACL</b> : sous-réseau, stateless, allow/deny</td></tr>
+<tr><td><b>Pricing Calculator</b> : estimer avant</td><td><b>Cost Explorer</b> : analyser après (+ prévision)</td></tr>
+<tr><td><b>Budgets</b> : alertes de seuil</td><td><b>Cost Explorer</b> : graphiques</td></tr>
+<tr><td><b>Reserved Instances</b> : type d’instance précis</td><td><b>Savings Plans</b> : engagement en $/h, plus flexible</td></tr>
+<tr><td><b>Spot</b> : interruptible, -90 %</td><td><b>On-Demand</b> : jamais interrompu, sans engagement</td></tr>
+<tr><td><b>Elastic Beanstalk</b> : PaaS pour déployer du code</td><td><b>CloudFormation</b> : IaC de n’importe quelle infra</td></tr>
+<tr><td><b>Lightsail</b> : simple, prix fixe</td><td><b>EC2</b> : contrôle total</td></tr>
+<tr><td><b>Région</b> : zone géographique</td><td><b>AZ</b> : datacenter(s) isolé(s) dans une région</td></tr>
+<tr><td><b>Haute disponibilité</b> → multi-AZ</td><td><b>Reprise après sinistre régionale</b> → multi-région</td></tr>
+<tr><td><b>Bedrock</b> : utiliser des modèles génératifs existants</td><td><b>SageMaker AI</b> : entraîner vos propres modèles</td></tr>
+<tr><td><b>Transcribe</b> : voix → texte</td><td><b>Polly</b> : texte → voix</td></tr>
+<tr><td><b>Textract</b> : texte dans des documents</td><td><b>Rekognition</b> : images/vidéos, visages</td></tr>
+<tr><td><b>Health Dashboard</b> : état des services AWS</td><td><b>Trusted Advisor</b> : recommandations sur <i>votre</i> compte</td></tr>
+</table></div>
+<div class="card"><h2>Mots-clés → réponse réflexe</h2>
+<table>
+<tr><td>« sans gérer de serveurs », « serverless »</td><td>Lambda, Fargate, DynamoDB, S3, Aurora Serverless, Athena</td></tr>
+<tr><td>« découpler »</td><td>SQS (ou SNS / EventBridge)</td></tr>
+<tr><td>« infrastructure as code », « modèles », « reproductible »</td><td>CloudFormation</td></tr>
+<tr><td>« transférer 80 To, réseau lent »</td><td>Snowball Edge</td></tr>
+<tr><td>« migrer une BD, la source reste opérationnelle »</td><td>DMS</td></tr>
+<tr><td>« accès root perdu / tâches root »</td><td>Changer le plan de support, fermer le compte</td></tr>
+<tr><td>« bloquer un service pour tous les comptes »</td><td>SCP dans Organizations</td></tr>
+<tr><td>« accorder à EC2 l’accès à S3 »</td><td>Rôle IAM</td></tr>
+<tr><td>« rapport SOC 2 / PCI d’AWS »</td><td>AWS Artifact</td></tr>
+<tr><td>« latence faible pour utilisateurs mondiaux, contenu statique »</td><td>CloudFront</td></tr>
+<tr><td>« logiciel tiers à acheter »</td><td>AWS Marketplace</td></tr>
+</table></div>`;
+
+/* ============ FLASHCARDS ============ */
+const FC = [
+["Service qui enregistre les appels API (qui, quoi, quand)","CloudTrail"],
+["Service de métriques, logs et alarmes","CloudWatch"],
+["Détection de menaces par ML","GuardDuty"],
+["Scan de vulnérabilités EC2/ECR/Lambda","Inspector"],
+["Trouver des données personnelles dans S3","Macie"],
+["Protection DDoS gratuite et automatique","Shield Standard"],
+["Bloquer injections SQL et XSS","AWS WAF"],
+["Rapports de conformité d’AWS (SOC, ISO, PCI)","AWS Artifact"],
+["Historique de configuration et règles de conformité","AWS Config"],
+["Clés de chiffrement gérées","KMS"],
+["HSM matériel dédié","CloudHSM"],
+["Secrets avec rotation automatique","Secrets Manager"],
+["Certificats SSL/TLS gratuits","AWS Certificate Manager (ACM)"],
+["Connexion des utilisateurs d’une appli mobile","Cognito"],
+["Limiter les permissions maximales d’un compte membre","SCP (AWS Organizations)"],
+["Identité temporaire pour un service AWS","Rôle IAM"],
+["6 piliers Well-Architected","Excellence opérationnelle, Sécurité, Fiabilité, Efficacité des performances, Optimisation des coûts, Durabilité"],
+["6 perspectives du CAF","Business, People, Governance (métier) · Platform, Security, Operations (technique)"],
+["Lift and shift","Rehost"],
+["Passer à un SaaS","Repurchase (drop and shop)"],
+["Transfert physique de pétaoctets","AWS Snow Family (Snowball Edge)"],
+["Fonctions serverless sur événement","Lambda"],
+["Conteneurs sans gérer de serveurs","Fargate"],
+["Déployer du code sans gérer l’infra (PaaS)","Elastic Beanstalk"],
+["Serveur simple à prix mensuel fixe","Lightsail"],
+["Stockage objet, 11 neuf de durabilité","S3"],
+["Archive la moins chère","S3 Glacier Deep Archive"],
+["Accès imprévisible, classe S3 automatique","S3 Intelligent-Tiering"],
+["Système de fichiers partagé Linux","EFS"],
+["Système de fichiers Windows","FSx for Windows File Server"],
+["Disque bloc d’une instance EC2","EBS"],
+["NoSQL clé-valeur serverless","DynamoDB"],
+["Entrepôt de données","Redshift"],
+["Base de données graphe","Neptune"],
+["Cache en mémoire","ElastiCache"],
+["SQL directement sur des fichiers S3","Athena"],
+["Streaming de données temps réel","Kinesis"],
+["Tableaux de bord BI","QuickSight"],
+["IA générative avec modèles de fondation","Bedrock"],
+["Entraîner ses propres modèles ML","SageMaker AI"],
+["Texte → voix","Polly"],
+["Voix → texte","Transcribe"],
+["Chatbot","Lex"],
+["Extraire le texte de formulaires scannés","Textract"],
+["DNS managé","Route 53"],
+["CDN","CloudFront"],
+["Connexion privée dédiée au datacenter","Direct Connect"],
+["File de messages pour découpler","SQS"],
+["Notifications pub/sub","SNS"],
+["Infrastructure as Code","CloudFormation"],
+["Racks AWS dans votre datacenter","Outposts"],
+["Infra AWS dans les réseaux 5G","Wavelength"],
+["Estimer un coût avant déploiement","Pricing Calculator"],
+["Alerte de dépassement de budget","AWS Budgets"],
+["Visualiser et prévoir les coûts","Cost Explorer"],
+["Données de facturation les plus détaillées","Cost and Usage Report"],
+["Jusqu’à 90 % de rabais, interruptible","Instances Spot"],
+["Licences logicielles par cœur/socket","Dedicated Hosts"],
+["Plan de support le moins cher avec tous les contrôles Trusted Advisor","Business"],
+["Plan avec TAM dédié et réponse < 15 min","Enterprise"],
+["Acheter un logiciel tiers","AWS Marketplace"],
+["Tâches réservées au root (2 exemples)","Changer de plan de support · Fermer le compte"]
+];
+
+/* ============ QUESTIONS ============ */
+// d = domaine, a = index(es) bonne(s) réponse(s), e = explication de chaque option
+const Q = [
+{d:1,q:"Quel avantage du cloud AWS permet à une entreprise de remplacer l’achat initial de serveurs par un paiement selon la consommation ?",
+o:["Remplacer les dépenses d’investissement par des dépenses variables","Bénéficier d’économies d’échelle massives","Devenir mondial en quelques minutes","Augmenter la vitesse et l’agilité"],a:[0],
+e:["C’est exactement la définition : on passe du CapEx (achat de serveurs) à l’OpEx (paiement à l’usage).","Les économies d’échelle concernent les prix plus bas obtenus grâce au volume d’AWS, pas le mode de paiement.","Concerne le déploiement dans plusieurs régions, pas le mode de paiement.","Concerne la rapidité d’obtenir des ressources, pas le passage de l’achat à la location."]},
+{d:1,q:"Une entreprise veut éviter d’acheter trop ou trop peu de serveurs pour un lancement de produit dont la demande est inconnue. Quel avantage du cloud cela illustre-t-il ?",
+o:["Économies d’échelle","Arrêter de deviner la capacité","Arrêter de dépenser pour exploiter des datacenters","Haute disponibilité"],a:[1],
+e:["Les économies d’échelle parlent des prix unitaires plus bas, pas de l’incertitude sur la demande.","Exact : avec le cloud on ajuste la capacité à la demande réelle au lieu de la prévoir.","Cet avantage parle de ne plus gérer racks, électricité et climatisation.","La haute disponibilité concerne la résistance aux pannes, pas le dimensionnement."]},
+{d:1,q:"Quel pilier du Well-Architected Framework met l’accent sur la capacité d’une charge de travail à se rétablir après une panne ?",
+o:["Efficacité des performances","Excellence opérationnelle","Fiabilité","Durabilité"],a:[2],
+e:["Ce pilier concerne l’usage efficace des ressources (bon type d’instance, serverless).","Ce pilier concerne l’exécution et l’amélioration des opérations (automatisation, IaC).","Exact : la fiabilité = se rétablir des défaillances, multi-AZ, tester la reprise.","Ce pilier concerne l’impact environnemental."]},
+{d:1,q:"Quel pilier du Well-Architected Framework recommande d’effectuer des changements fréquents, petits et réversibles, et de réaliser les opérations sous forme de code ?",
+o:["Excellence opérationnelle","Sécurité","Optimisation des coûts","Fiabilité"],a:[0],
+e:["Exact : « operations as code » et petits changements réversibles sont des principes de l’excellence opérationnelle.","La sécurité porte sur la protection (moindre privilège, traçabilité, chiffrement).","L’optimisation des coûts porte sur l’élimination du gaspillage.","La fiabilité porte sur la reprise après panne. Piège fréquent, mais les « changements petits et réversibles » relèvent de l’excellence opérationnelle."]},
+{d:1,q:"Selon le CAF d’AWS, quelle perspective s’occupe de la culture, des compétences et de la formation du personnel ?",
+o:["Governance","People","Platform","Operations"],a:[1],
+e:["Governance = gestion des risques, budgets, programmes.","Exact : People = culture, structure organisationnelle, compétences, gestion du changement.","Platform = architecture et infrastructure technique.","Operations = surveillance, gestion des incidents, continuité."]},
+{d:1,q:"Une entreprise migre une application vers EC2 sans la modifier. Quelle stratégie de migration est-ce ?",
+o:["Refactor","Replatform","Rehost","Repurchase"],a:[2],
+e:["Refactor = réécrire l’application en cloud-native ; ici on ne modifie rien.","Replatform = petites optimisations (ex. passer la BD à RDS). Ici aucune modification.","Exact : Rehost = « lift and shift », déplacer tel quel.","Repurchase = remplacer par un produit SaaS."]},
+{d:1,q:"Une entreprise remplace son CRM installé sur site par un CRM en SaaS. Quelle stratégie de migration est-ce ?",
+o:["Retain","Repurchase","Relocate","Retire"],a:[1],
+e:["Retain = garder l’application sur site.","Exact : Repurchase (« drop and shop ») = passer à un produit différent, souvent SaaS.","Relocate = déplacer un environnement VMware vers VMware Cloud on AWS.","Retire = supprimer l’application devenue inutile."]},
+{d:1,q:"Une entreprise doit transférer 70 To vers AWS mais sa connexion Internet est lente. Quelle est la meilleure solution ?",
+o:["AWS Direct Connect","AWS Snowball Edge","Amazon S3 Transfer Acceleration","AWS DataSync"],a:[1],
+e:["Direct Connect prend des semaines à installer et coûte cher pour un transfert ponctuel.","Exact : Snowball Edge est un appareil physique expédié pour transférer des dizaines de To quand le réseau est trop lent.","Accélère les uploads via les edge locations, mais dépend toujours de la connexion Internet lente.","DataSync transfère en ligne : limité par la bande passante, trop lent ici."]},
+{d:1,q:"Quel service permet de migrer une base de données vers AWS en gardant la base source opérationnelle pendant la migration ?",
+o:["AWS Database Migration Service (DMS)","AWS Snowcone","Amazon RDS","AWS Migration Hub"],a:[0],
+e:["Exact : DMS migre les BD avec un temps d’arrêt minimal ; la source reste utilisable.","Snowcone est un petit appareil de transfert physique, pas un outil de migration de BD en continu.","RDS est la destination possible, pas l’outil de migration.","Migration Hub suit l’avancement des migrations, mais ne déplace pas les données."]},
+{d:1,q:"Quelle caractéristique du cloud permet d’ajouter automatiquement des instances lorsque la demande augmente et d’en retirer lorsqu’elle diminue ?",
+o:["Durabilité","Élasticité","Tolérance aux pannes","Haute disponibilité"],a:[1],
+e:["La durabilité concerne la conservation des données sans perte (ex. S3).","Exact : l’élasticité = ajuster automatiquement les ressources à la demande (Auto Scaling).","Tolérance aux pannes = continuer malgré une défaillance.","Haute disponibilité = rester accessible (souvent multi-AZ), pas l’ajustement à la demande."]},
+{d:1,q:"Laquelle de ces actions réduit le coût total de possession (TCO) en passant au cloud ? (Choisissez DEUX.)",
+o:["Ne plus payer l’électricité et le refroidissement des datacenters","Acheter des serveurs pour le pic de demande","Utiliser des services managés pour réduire le travail d’administration","Signer des contrats de matériel sur 5 ans","Ajouter du personnel pour le remplacement des disques"],a:[0,2],
+e:["Exact : ces coûts d’infrastructure physique disparaissent avec le cloud.","Acheter pour le pic est justement le gaspillage que le cloud permet d’éviter.","Exact : les services managés (RDS, Lambda) diminuent le coût humain d’exploitation.","Les contrats de matériel longs sont un coût sur site, pas une économie cloud.","Remplacer des disques est la responsabilité d’AWS dans le cloud : vous n’avez plus ce coût."]},
+
+{d:2,q:"Selon le modèle de responsabilité partagée, laquelle de ces tâches est la responsabilité du client ?",
+o:["Sécurité physique des datacenters","Application des correctifs sur l’OS invité des instances EC2","Maintenance du matériel réseau","Sécurité de l’hyperviseur"],a:[1],
+e:["Responsabilité d’AWS (sécurité DU cloud).","Exact : sur EC2 (IaaS), le client gère et patche son système d’exploitation.","Responsabilité d’AWS : infrastructure matérielle.","Responsabilité d’AWS : couche de virtualisation."]},
+{d:2,q:"Pour Amazon RDS, qui applique les correctifs au moteur de base de données ?",
+o:["Le client","AWS","Le partenaire APN","Personne : RDS n’a pas besoin de correctifs"],a:[1],
+e:["Le client le ferait sur une BD installée sur EC2, mais RDS est un service managé.","Exact : RDS est managé, AWS patche l’OS et le moteur (dans la fenêtre de maintenance choisie).","Les partenaires ne sont pas impliqués par défaut.","Tout logiciel doit être patché ; c’est AWS qui le fait ici."]},
+{d:2,q:"Quels contrôles sont considérés comme PARTAGÉS entre AWS et le client ? (Choisissez DEUX.)",
+o:["Gestion des correctifs","Contrôles physiques et environnementaux","Sensibilisation et formation","Chiffrement des données côté client","Destruction des disques en fin de vie"],a:[0,2],
+e:["Exact : AWS patche l’infra, le client patche ses OS invités et applications.","Contrôle hérité : 100 % AWS.","Exact : AWS forme ses employés, le client forme les siens.","Uniquement le client.","Uniquement AWS (destruction sécurisée des supports)."]},
+{d:2,q:"Quelle est la meilleure pratique concernant l’utilisateur root d’un compte AWS ?",
+o:["L’utiliser pour les tâches quotidiennes d’administration","Partager son mot de passe avec l’équipe","Activer MFA et l’utiliser seulement pour les tâches qui l’exigent","Créer des clés d’accès root pour la CLI"],a:[2],
+e:["Mauvaise pratique : on crée un utilisateur/rôle administrateur pour le quotidien.","Ne jamais partager des identifiants, surtout root.","Exact : protéger le root par MFA et le réserver aux tâches qui l’exigent.","AWS recommande de ne pas avoir de clés d’accès root."]},
+{d:2,q:"Laquelle de ces tâches nécessite l’utilisateur root ?",
+o:["Créer un bucket S3","Changer de plan AWS Support","Lancer une instance EC2","Créer un utilisateur IAM"],a:[1],
+e:["Un utilisateur IAM avec les permissions S3 peut le faire.","Exact : changer (ou annuler) le plan de support est réservé au root, comme la fermeture du compte.","Faisable avec un utilisateur IAM ayant les droits EC2.","Faisable par un administrateur IAM."]},
+{d:2,q:"Une application sur EC2 doit lire des objets dans S3. Quelle est la méthode la plus sécurisée ?",
+o:["Mettre des clés d’accès dans le code","Attacher un rôle IAM à l’instance","Rendre le bucket public","Utiliser les identifiants root"],a:[1],
+e:["Les clés dans le code peuvent fuiter (dépôt Git) et ne tournent pas automatiquement.","Exact : le rôle IAM fournit des identifiants temporaires renouvelés automatiquement.","Rendre public expose les données à tout Internet.","Jamais : accès total et risqué."]},
+{d:2,q:"Quel principe consiste à donner seulement les permissions nécessaires à une tâche ?",
+o:["Défense en profondeur","Moindre privilège","Séparation des comptes","Chiffrement de bout en bout"],a:[1],
+e:["La défense en profondeur = plusieurs couches de sécurité, pas la limitation des droits.","Exact : le moindre privilège (least privilege) est la règle de base d’IAM.","Utile, mais ce n’est pas la définition donnée.","Concerne la protection des données en transit."]},
+{d:2,q:"Une entreprise veut empêcher TOUS les comptes de son organisation d’utiliser un service précis, y compris les administrateurs de ces comptes. Que doit-elle utiliser ?",
+o:["Une politique IAM sur chaque utilisateur","Une Service Control Policy (SCP) dans AWS Organizations","Un Security Group","AWS Config"],a:[1],
+e:["Faisable mais fastidieux et un admin du compte pourrait la retirer.","Exact : une SCP fixe la limite maximale des permissions d’un compte membre, même pour son root.","Un Security Group filtre le trafic réseau, pas l’usage des services.","Config évalue la conformité mais ne bloque pas les actions."]},
+{d:2,q:"Quel service détecte des activités malveillantes, comme une instance EC2 qui communique avec une adresse IP de minage de cryptomonnaie ?",
+o:["Amazon Inspector","Amazon GuardDuty","Amazon Macie","AWS Shield"],a:[1],
+e:["Inspector cherche des vulnérabilités logicielles, pas des comportements suspects en cours.","Exact : GuardDuty analyse CloudTrail, VPC Flow Logs et DNS pour repérer des menaces.","Macie trouve des données sensibles dans S3.","Shield protège contre les DDoS."]},
+{d:2,q:"Quel service analyse automatiquement les instances EC2 et les images de conteneurs pour trouver des vulnérabilités logicielles connues ?",
+o:["Amazon Inspector","Amazon Detective","AWS Trusted Advisor","Amazon GuardDuty"],a:[0],
+e:["Exact : Inspector scanne EC2, ECR et Lambda à la recherche de CVE et d’expositions réseau.","Detective sert à enquêter sur la cause racine d’un incident.","Trusted Advisor fait des recommandations générales (ex. ports ouverts), pas un scan de CVE.","GuardDuty détecte des menaces actives, pas des vulnérabilités logicielles."]},
+{d:2,q:"Quel service utilise le machine learning pour découvrir des données personnelles (PII) dans Amazon S3 ?",
+o:["Amazon Macie","AWS Config","Amazon Comprehend","AWS Security Hub"],a:[0],
+e:["Exact : Macie découvre et protège les données sensibles dans S3.","Config suit la configuration des ressources, pas leur contenu.","Comprehend fait du NLP sur du texte, mais le service de sécurité dédié à S3 est Macie.","Security Hub agrège les alertes d’autres services, dont Macie."]},
+{d:2,q:"Un auditeur demande le rapport SOC 2 d’AWS. Où l’obtenir ?",
+o:["AWS Audit Manager","AWS Artifact","AWS Trusted Advisor","AWS Security Hub"],a:[1],
+e:["Audit Manager collecte des preuves pour VOS audits, pas les rapports d’AWS.","Exact : Artifact donne accès à la demande aux rapports de conformité d’AWS (SOC, PCI, ISO).","Trusted Advisor fait des recommandations, pas de rapports de conformité.","Security Hub agrège vos alertes de sécurité."]},
+{d:2,q:"Quel service permet de savoir quel utilisateur a supprimé une instance EC2 hier ?",
+o:["Amazon CloudWatch","AWS CloudTrail","AWS Config","Amazon Inspector"],a:[1],
+e:["CloudWatch suit des métriques et logs de performance, pas l’identité derrière les appels API.","Exact : CloudTrail enregistre chaque appel API avec l’identité, l’heure et l’adresse IP source.","Config montre que la ressource a changé, mais c’est CloudTrail qui identifie QUI l’a fait.","Inspector scanne les vulnérabilités."]},
+{d:2,q:"Une entreprise veut être alertée lorsqu’un Security Group autorise SSH depuis 0.0.0.0/0, et garder l’historique des modifications de configuration. Quel service ?",
+o:["AWS Config","AWS CloudTrail","Amazon Macie","AWS Shield"],a:[0],
+e:["Exact : Config enregistre l’historique de configuration et évalue des règles de conformité.","CloudTrail enregistre l’appel API, mais n’évalue pas la conformité d’une configuration.","Macie concerne les données sensibles dans S3.","Shield protège contre les DDoS."]},
+{d:2,q:"Quel service protège une application web contre les injections SQL et le cross-site scripting (XSS) ?",
+o:["AWS Shield Standard","AWS WAF","Security Groups","Amazon GuardDuty"],a:[1],
+e:["Shield protège contre les DDoS (couches réseau), pas les attaques applicatives SQLi/XSS.","Exact : WAF filtre les requêtes HTTP (couche 7) selon des règles.","Les Security Groups filtrent par port et IP, ils ne lisent pas le contenu des requêtes.","GuardDuty détecte des menaces, il ne bloque pas les requêtes web."]},
+{d:2,q:"Une entreprise exige un module matériel de sécurité dédié dont elle seule contrôle les clés. Quel service ?",
+o:["AWS KMS","AWS CloudHSM","AWS Secrets Manager","AWS Certificate Manager"],a:[1],
+e:["KMS est multi-locataire et géré par AWS ; pas de HSM dédié contrôlé uniquement par vous.","Exact : CloudHSM fournit un HSM dédié, mono-locataire.","Secrets Manager stocke des secrets, ce n’est pas un HSM.","ACM gère des certificats SSL/TLS."]},
+{d:2,q:"Quel service stocke les mots de passe de base de données et en effectue la rotation automatique ?",
+o:["AWS Secrets Manager","AWS KMS","Amazon Cognito","IAM"],a:[0],
+e:["Exact : Secrets Manager stocke et fait tourner automatiquement les secrets (intégration native avec RDS).","KMS gère des clés de chiffrement, pas les mots de passe applicatifs.","Cognito gère les utilisateurs d’applis.","IAM gère les identités AWS, pas les mots de passe de BD."]},
+{d:2,q:"Une appli mobile doit permettre aux utilisateurs de se connecter avec leur compte Google. Quel service ?",
+o:["IAM Identity Center","Amazon Cognito","AWS Directory Service","AWS Organizations"],a:[1],
+e:["Identity Center sert aux employés qui accèdent à des comptes AWS et applis d’entreprise.","Exact : Cognito gère l’inscription/connexion des utilisateurs finaux d’applis, y compris via Google/Facebook.","Directory Service fournit un Active Directory managé.","Organizations gère plusieurs comptes AWS."]},
+{d:2,q:"Quelle affirmation sur les Security Groups est vraie ?",
+o:["Ils sont stateless","Ils s’appliquent au niveau du sous-réseau","Ils sont stateful et ne contiennent que des règles d’autorisation","Ils peuvent contenir des règles de refus explicites"],a:[2],
+e:["Faux : ce sont les Network ACL qui sont stateless.","Faux : niveau instance ; les NACL sont au niveau sous-réseau.","Exact : stateful (le trafic de retour est autorisé automatiquement) et uniquement des « allow ».","Faux : seules les NACL permettent des règles « deny »."]},
+{d:2,q:"Qui contacter pour signaler qu’une ressource AWS est utilisée pour envoyer du spam ?",
+o:["Le TAM","L’équipe AWS Trust & Safety","AWS Professional Services","AWS re:Post"],a:[1],
+e:["Le TAM existe seulement avec Enterprise, et ce n’est pas son rôle.","Exact : l’équipe Trust & Safety (anciennement Abuse) traite les abus.","Professional Services accompagne les projets clients.","re:Post est un forum communautaire."]},
+{d:2,q:"Quel service offre une protection DDoS avancée avec une équipe de réponse 24/7 et une protection contre les hausses de coûts liées à une attaque ?",
+o:["AWS Shield Standard","AWS Shield Advanced","AWS WAF","Amazon CloudFront"],a:[1],
+e:["Shield Standard est gratuit et automatique, mais sans équipe de réponse ni protection des coûts.","Exact : Shield Advanced ajoute l’équipe SRT, la protection des coûts et la détection avancée.","WAF filtre les requêtes web, ce n’est pas l’offre DDoS avec équipe.","CloudFront aide à absorber le trafic, mais l’offre décrite est Shield Advanced."]},
+
+{d:3,q:"Quels facteurs influencent le choix d’une région AWS ? (Choisissez DEUX.)",
+o:["Exigences de conformité et de résidence des données","Le nombre d’edge locations dans le pays","La proximité des utilisateurs (latence)","La couleur de la console","Le nombre d’utilisateurs IAM"],a:[0,2],
+e:["Exact : certaines lois exigent que les données restent dans un pays.","Les edge locations servent au CDN et sont indépendantes du choix de région.","Exact : plus la région est proche, plus la latence est faible.","Sans rapport.","IAM est global, sans lien avec la région."]},
+{d:3,q:"Comment rendre une application hautement disponible au sein d’une région ?",
+o:["Déployer sur plusieurs zones de disponibilité","Utiliser une instance plus grosse","Déployer dans une seule AZ avec plusieurs instances","Utiliser des edge locations"],a:[0],
+e:["Exact : si une AZ tombe, les autres continuent de servir.","La scalabilité verticale n’élimine pas le point unique de défaillance.","Une panne de l’AZ entière arrêterait tout.","Les edge locations servent au cache de contenu, pas à héberger l’application."]},
+{d:3,q:"Quel service permet d’exécuter du code en réponse à des événements sans provisionner de serveurs ?",
+o:["Amazon EC2","AWS Lambda","AWS Elastic Beanstalk","Amazon Lightsail"],a:[1],
+e:["EC2 demande de gérer des serveurs.","Exact : Lambda est serverless et déclenché par événements.","Beanstalk provisionne des instances EC2 pour vous : il y a quand même des serveurs.","Lightsail fournit des serveurs virtuels simples."]},
+{d:3,q:"Une entreprise veut exécuter des conteneurs sans gérer les instances EC2 sous-jacentes. Quel service ?",
+o:["Amazon ECR","AWS Fargate","Amazon EC2 Auto Scaling","AWS Batch"],a:[1],
+e:["ECR stocke les images de conteneurs, il ne les exécute pas.","Exact : Fargate exécute les conteneurs ECS/EKS en mode serverless.","Auto Scaling ajuste des instances, que vous gérez encore.","Batch gère des travaux par lots, pas le cas décrit."]},
+{d:3,q:"Un développeur veut déposer son code Java et laisser AWS gérer le provisionnement, l’équilibrage de charge et l’auto scaling. Quel service ?",
+o:["AWS CloudFormation","AWS Elastic Beanstalk","Amazon EC2","AWS CodeCommit"],a:[1],
+e:["CloudFormation décrit l’infrastructure en code, il faut écrire le modèle soi-même.","Exact : Beanstalk (PaaS) prend le code et provisionne l’environnement.","EC2 demande de tout configurer à la main.","CodeCommit est un dépôt Git."]},
+{d:3,q:"Quel service propose des serveurs virtuels simples avec un prix mensuel fixe, idéal pour un petit site WordPress ?",
+o:["Amazon Lightsail","Amazon EC2 Dedicated Hosts","AWS Outposts","Amazon EKS"],a:[0],
+e:["Exact : Lightsail = simplicité + prix fixe.","Serveurs physiques dédiés coûteux, pour licences ou conformité.","Racks AWS sur site, pour l’hybride.","Kubernetes managé, bien trop complexe pour ce besoin."]},
+{d:3,q:"Une entreprise stocke des journaux qu’elle doit conserver 7 ans et consulte rarement ; une récupération en 48 h est acceptable. Quelle classe S3 coûte le moins cher ?",
+o:["S3 Standard-IA","S3 Glacier Instant Retrieval","S3 Glacier Deep Archive","S3 Intelligent-Tiering"],a:[2],
+e:["Pour des accès peu fréquents mais rapides ; plus cher que les archives.","Accès en millisecondes : plus cher, inutile si 48 h suffisent.","Exact : la classe la moins chère, récupération en 12–48 h.","Utile quand le modèle d’accès est inconnu ; ici il est connu (quasi jamais)."]},
+{d:3,q:"Les modèles d’accès aux données d’une entreprise sont imprévisibles. Quelle classe S3 optimise automatiquement les coûts ?",
+o:["S3 One Zone-IA","S3 Intelligent-Tiering","S3 Glacier Flexible Retrieval","S3 Standard"],a:[1],
+e:["One Zone-IA est pour des données peu consultées et recréables, sans déplacement automatique.","Exact : Intelligent-Tiering déplace les objets entre niveaux selon leur usage.","Archive : récupération lente, inadaptée à un accès imprévisible.","Standard ne fait aucune optimisation automatique."]},
+{d:3,q:"Plusieurs instances EC2 Linux dans différentes AZ doivent partager un même système de fichiers. Quel service ?",
+o:["Amazon EBS","Amazon EFS","Instance Store","Amazon S3 Glacier"],a:[1],
+e:["Un volume EBS est lié à une seule AZ et généralement à une seule instance.","Exact : EFS est un système de fichiers NFS partagé et multi-AZ.","Stockage éphémère local à une instance.","Archive, pas un système de fichiers monté."]},
+{d:3,q:"Qu’arrive-t-il aux données d’un volume Instance Store lorsque l’instance est arrêtée ?",
+o:["Elles sont copiées dans S3","Elles sont perdues","Elles sont conservées","Elles sont déplacées vers EBS"],a:[1],
+e:["Aucune copie automatique.","Exact : l’Instance Store est éphémère.","C’est le comportement d’EBS, pas de l’Instance Store.","Aucun déplacement automatique."]},
+{d:3,q:"Une application doit stocker des données clé-valeur avec une latence de quelques millisecondes à n’importe quelle échelle, sans gérer de serveurs. Quel service ?",
+o:["Amazon RDS","Amazon DynamoDB","Amazon Redshift","Amazon Neptune"],a:[1],
+e:["RDS est relationnel et repose sur des instances à dimensionner.","Exact : DynamoDB est NoSQL clé-valeur, serverless et ultra-rapide.","Redshift est un entrepôt de données analytique.","Neptune est une base graphe."]},
+{d:3,q:"Une entreprise veut analyser des pétaoctets de données historiques avec des requêtes SQL complexes (entrepôt de données). Quel service ?",
+o:["Amazon Redshift","Amazon DynamoDB","Amazon ElastiCache","Amazon RDS for MySQL"],a:[0],
+e:["Exact : Redshift est l’entrepôt de données (OLAP) d’AWS.","DynamoDB est NoSQL transactionnel, pas analytique.","ElastiCache est un cache en mémoire.","RDS est conçu pour le transactionnel (OLTP), pas l’analyse de pétaoctets."]},
+{d:3,q:"Quel service permet d’exécuter des requêtes SQL directement sur des fichiers stockés dans S3, sans charger les données ?",
+o:["Amazon Athena","AWS Glue","Amazon EMR","Amazon QuickSight"],a:[0],
+e:["Exact : Athena est serverless et interroge S3 en SQL.","Glue fait de l’ETL et du catalogage ; souvent utilisé AVEC Athena.","EMR exécute Hadoop/Spark sur des clusters.","QuickSight visualise les données, il ne fait pas les requêtes sur S3 lui-même."]},
+{d:3,q:"Une entreprise veut une connexion réseau privée et dédiée entre son datacenter et AWS, avec une bande passante constante, sans passer par Internet. Quel service ?",
+o:["AWS Site-to-Site VPN","AWS Direct Connect","Amazon CloudFront","Internet Gateway"],a:[1],
+e:["Le VPN est chiffré mais passe par Internet : bande passante variable.","Exact : Direct Connect est une liaison physique dédiée.","CloudFront est un CDN.","L’Internet Gateway connecte le VPC à Internet, l’inverse de ce qui est demandé."]},
+{d:3,q:"Une entreprise veut réduire la latence pour ses utilisateurs du monde entier qui téléchargent des vidéos et images statiques. Quel service ?",
+o:["Amazon CloudFront","Amazon Route 53","AWS Direct Connect","Amazon VPC"],a:[0],
+e:["Exact : CloudFront met en cache le contenu aux edge locations proches des utilisateurs.","Route 53 est le DNS ; il dirige le trafic mais ne met pas en cache le contenu.","Direct Connect relie un datacenter à AWS.","Le VPC est votre réseau privé, il ne distribue pas de contenu."]},
+{d:3,q:"Quel service fournit le DNS et peut diriger les utilisateurs vers la région qui offre la latence la plus faible ?",
+o:["Amazon Route 53","Elastic Load Balancing","AWS Global Accelerator","Amazon API Gateway"],a:[0],
+e:["Exact : Route 53 est le DNS d’AWS avec routage basé sur la latence, géolocalisation, basculement.","ELB répartit le trafic dans une région, ce n’est pas un DNS.","Global Accelerator améliore le routage via des IP anycast, mais n’est pas un service DNS.","API Gateway gère des API."]},
+{d:3,q:"Deux composants d’une application doivent être découplés : l’un produit des commandes, l’autre les traite à son rythme. Quel service ?",
+o:["Amazon SNS","Amazon SQS","Amazon CloudWatch","AWS Step Functions"],a:[1],
+e:["SNS pousse des notifications à des abonnés ; il ne stocke pas les messages en attente de traitement.","Exact : SQS est une file d’attente qui garde les messages jusqu’à leur traitement.","CloudWatch surveille, il ne transporte pas de messages.","Step Functions orchestre des étapes, mais le découplage producteur/consommateur classique est SQS."]},
+{d:3,q:"Une entreprise veut envoyer une notification par email et SMS à plusieurs abonnés lorsqu’une alarme se déclenche. Quel service ?",
+o:["Amazon SQS","Amazon SNS","Amazon SES","Amazon Connect"],a:[1],
+e:["SQS est une file pour une application, pas des notifications à des personnes.","Exact : SNS = pub/sub vers email, SMS, Lambda, SQS…","SES sert à l’envoi d’emails en masse (marketing, transactionnel), pas au SMS ni aux alarmes.","Connect est un centre d’appels."]},
+{d:3,q:"Quel service permet de déployer une infrastructure de manière répétable à partir de modèles texte (Infrastructure as Code) ?",
+o:["AWS CloudFormation","AWS Config","AWS Systems Manager","AWS OpsWorks"],a:[0],
+e:["Exact : CloudFormation crée des piles à partir de modèles JSON/YAML.","Config suit la configuration, il ne déploie pas.","Systems Manager gère des instances existantes (correctifs, commandes).","Ancien service de configuration (Chef/Puppet), retiré ; la réponse IaC attendue est CloudFormation."]},
+{d:3,q:"Une entreprise veut créer une application d’IA générative en utilisant des modèles de fondation existants via une API, sans gérer d’infrastructure. Quel service ?",
+o:["Amazon SageMaker AI","Amazon Bedrock","Amazon Rekognition","Amazon Comprehend"],a:[1],
+e:["SageMaker sert à construire et entraîner vos propres modèles : plus de travail.","Exact : Bedrock donne accès à des modèles de fondation par API, entièrement managé.","Rekognition analyse des images, ce n’est pas de l’IA générative.","Comprehend fait de l’analyse de texte (NLP)."]},
+{d:3,q:"Quel service convertit des enregistrements audio d’appels clients en texte ?",
+o:["Amazon Polly","Amazon Transcribe","Amazon Translate","Amazon Lex"],a:[1],
+e:["Polly fait l’inverse : texte → voix.","Exact : Transcribe = reconnaissance vocale (voix → texte).","Translate traduit du texte d’une langue à une autre.","Lex construit des chatbots."]},
+{d:3,q:"Quel service extrait automatiquement le texte et les tableaux de formulaires scannés ?",
+o:["Amazon Textract","Amazon Rekognition","Amazon Kendra","Amazon Comprehend"],a:[0],
+e:["Exact : Textract fait de l’OCR intelligent sur des documents.","Rekognition analyse images/vidéos (visages, objets), pas la structure de documents.","Kendra fait de la recherche dans des documents.","Comprehend analyse du texte déjà extrait."]},
+{d:3,q:"Une entreprise doit exécuter des services AWS dans son propre datacenter pour des besoins de faible latence locale. Quel service ?",
+o:["AWS Local Zones","AWS Outposts","AWS Wavelength","Amazon CloudFront"],a:[1],
+e:["Local Zones sont des sites AWS près des villes, pas dans votre datacenter.","Exact : Outposts installe du matériel AWS chez vous.","Wavelength place l’infra AWS dans les réseaux 5G des opérateurs.","CloudFront est un CDN."]},
+{d:3,q:"Quel service permet de gérer et d’appliquer des correctifs à une flotte d’instances EC2 et de serveurs sur site ?",
+o:["AWS Systems Manager","AWS Trusted Advisor","Amazon Inspector","AWS CloudTrail"],a:[0],
+e:["Exact : Systems Manager (Patch Manager, Run Command, Session Manager).","Trusted Advisor recommande, il n’applique rien.","Inspector trouve les vulnérabilités mais n’applique pas les correctifs.","CloudTrail journalise les appels API."]},
+{d:3,q:"Où consulter les événements AWS qui affectent spécifiquement les ressources de votre compte (ex. maintenance planifiée de votre instance) ?",
+o:["AWS Health Dashboard (Your account health)","AWS Trusted Advisor","Amazon CloudWatch","AWS Config"],a:[0],
+e:["Exact : la vue « Your account health » affiche les événements qui touchent vos ressources.","Trusted Advisor fait des recommandations de bonnes pratiques.","CloudWatch montre vos métriques, pas les événements de maintenance AWS.","Config suit vos configurations."]},
+
+{d:4,q:"Une entreprise exécute une application stable 24/7 pour les 3 prochaines années. Quelle option EC2 est la plus économique ?",
+o:["On-Demand","Spot","Reserved Instances ou Savings Plans sur 3 ans","Dedicated Hosts"],a:[2],
+e:["On-Demand est le plus cher pour une charge permanente.","Spot peut être interrompu : inadapté à une application qui doit tourner sans arrêt.","Exact : engagement de 3 ans = jusqu’à ~72 % de rabais pour une charge prévisible.","Les Dedicated Hosts répondent aux licences/conformité et coûtent plus cher."]},
+{d:4,q:"Une entreprise doit exécuter des traitements par lots qui peuvent être interrompus et repris. Quelle option EC2 est la moins chère ?",
+o:["Instances Spot","Reserved Instances","On-Demand","Dedicated Instances"],a:[0],
+e:["Exact : jusqu’à 90 % de rabais, parfait pour des charges tolérantes aux interruptions.","Exige un engagement 1–3 ans, inutile pour des traitements flexibles.","Plus cher que Spot.","Plus cher, pour l’isolation matérielle."]},
+{d:4,q:"Une entreprise veut utiliser ses licences logicielles existantes facturées par cœur physique. Quelle option EC2 ?",
+o:["Spot","Dedicated Hosts","On-Demand","Savings Plans"],a:[1],
+e:["Spot ne donne aucune visibilité sur le matériel physique.","Exact : Dedicated Hosts donne la visibilité sur les sockets/cœurs pour le BYOL.","Matériel partagé, sans visibilité sur les cœurs physiques.","C’est un modèle de remise, pas un modèle d’hébergement physique."]},
+{d:4,q:"Quel outil permet d’estimer le coût d’une architecture AWS AVANT de la déployer ?",
+o:["AWS Cost Explorer","AWS Pricing Calculator","AWS Budgets","Cost and Usage Report"],a:[1],
+e:["Cost Explorer analyse les coûts déjà engagés (et prévoit à partir de l’historique).","Exact : le Pricing Calculator sert aux estimations avant déploiement.","Budgets alerte sur les dépenses réelles ou prévues.","Le CUR détaille la facturation réelle."]},
+{d:4,q:"Une entreprise veut recevoir un email quand ses dépenses mensuelles dépassent 500 $. Quel service ?",
+o:["AWS Budgets","AWS Cost Explorer","AWS Pricing Calculator","AWS Trusted Advisor"],a:[0],
+e:["Exact : Budgets envoie des alertes selon des seuils de coût ou d’usage.","Cost Explorer visualise, mais l’outil des alertes de seuil est Budgets.","Le calculateur estime, il ne surveille pas.","Trusted Advisor fait des recommandations d’optimisation, pas des alertes de budget."]},
+{d:4,q:"Quel outil permet de visualiser les coûts des 12 derniers mois par service et de prévoir les dépenses futures ?",
+o:["AWS Cost Explorer","AWS Budgets","AWS Artifact","AWS Pricing Calculator"],a:[0],
+e:["Exact : graphiques, filtres et prévisions.","Budgets alerte mais n’est pas l’outil d’analyse graphique.","Artifact donne les rapports de conformité.","Le calculateur estime une architecture future, pas l’historique."]},
+{d:4,q:"Quel avantage offre la facturation consolidée d’AWS Organizations ?",
+o:["Chaque compte reçoit une facture séparée plus chère","Les usages de tous les comptes sont cumulés pour obtenir des remises de volume","Elle active automatiquement Shield Advanced","Elle donne un TAM gratuit"],a:[1],
+e:["Faux : il y a une seule facture, et elle n’est pas plus chère.","Exact : une facture unique et des paliers de volume atteints plus vite.","Sans lien.","Le TAM vient avec le plan Enterprise."]},
+{d:4,q:"Quel est le plan de support le MOINS cher qui donne accès à tous les contrôles Trusted Advisor et à un support technique 24/7 par téléphone ?",
+o:["Basic","Developer","Business","Enterprise"],a:[2],
+e:["Basic n’offre que les contrôles de base et aucun support technique.","Developer : email en heures ouvrables seulement.","Exact : Business = 24/7 téléphone/chat/email + tous les contrôles Trusted Advisor.","Enterprise les offre aussi, mais coûte beaucoup plus cher."]},
+{d:4,q:"Quel plan de support inclut un Technical Account Manager (TAM) dédié et un délai de réponse de 15 minutes pour une panne critique ?",
+o:["Business","Enterprise On-Ramp","Enterprise","Developer"],a:[2],
+e:["Pas de TAM ; réponse < 1 h pour une panne de production.","Pool de TAM (pas dédié) et réponse < 30 min.","Exact : TAM dédié + Concierge + < 15 min.","Aucun TAM, réponse par email."]},
+{d:4,q:"Quels coûts de transfert de données sont généralement GRATUITS ? (Choisissez DEUX.)",
+o:["Transfert entrant depuis Internet vers AWS","Transfert sortant vers Internet","Transfert entre deux régions","Transfert entre S3 et CloudFront (origine → edge)","Transfert entre AZ"],a:[0,3],
+e:["Exact : les données entrantes sont gratuites.","Payant : c’est un des 3 moteurs de coût.","Payant.","Exact : le transfert de l’origine AWS vers CloudFront n’est pas facturé.","Payant (faible mais facturé)."]},
+{d:4,q:"Où acheter et déployer un logiciel de sécurité d’un éditeur tiers, facturé sur la facture AWS ?",
+o:["AWS Marketplace","AWS Partner Network","AWS Professional Services","AWS Artifact"],a:[0],
+e:["Exact : le Marketplace est le catalogue de logiciels tiers.","L’APN est le programme de partenaires, pas une boutique.","Ce sont des consultants d’AWS.","Rapports de conformité."]},
+{d:4,q:"Quelle ressource GRATUITE permet de poser des questions à la communauté et aux experts AWS ?",
+o:["AWS re:Post","AWS Concierge","AWS Professional Services","TAM"],a:[0],
+e:["Exact : re:Post est le forum de Q&R communautaire, accessible à tous.","Concierge fait partie du plan Enterprise.","Service payant.","Seulement avec Enterprise / On-Ramp."]},
+{d:4,q:"Quel outil fournit les données de facturation AWS les plus détaillées (ligne par ligne, par heure), livrées dans S3 ?",
+o:["AWS Cost and Usage Report","AWS Budgets","AWS Cost Explorer","Facture PDF mensuelle"],a:[0],
+e:["Exact : le CUR (Data Exports) est le jeu de données le plus granulaire.","Budgets = alertes.","Cost Explorer agrège et visualise, moins détaillé que le CUR.","La facture est un résumé."]},
+{d:4,q:"Lequel de ces services n’entraîne AUCUN frais en lui-même ?",
+o:["AWS Identity and Access Management (IAM)","Amazon EC2","Amazon RDS","AWS Shield Advanced"],a:[0],
+e:["Exact : IAM est gratuit (tout comme VPC, CloudFormation, Elastic Beanstalk : on paie seulement les ressources créées).","EC2 est facturé à la seconde/heure.","RDS est facturé selon l’instance et le stockage.","Shield Advanced a un abonnement mensuel important."]}
+];
+
+/* ============ RENDU ============ */
+const app = document.getElementById('app');
+const store = {get(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const DN = {1:"Concepts cloud",2:"Sécurité",3:"Technologies",4:"Facturation"};
+
+function show(v){
+  const navKey = v.startsWith('ch-')?'cours':v;
+  document.querySelectorAll('#nav button').forEach(b=>b.classList.toggle('on',b.dataset.v===navKey));
+  if(V[v]) app.innerHTML = V[v];
+  else if(v==='cours') coursList();
+  else if(v.startsWith('ch-')) chapter(+v.slice(3));
+  else if(v==='flash') flash();
+  else if(v==='quiz') quizHome();
+  else if(v==='equipe') team();
+  else if(v==='toutes') allQ();
+  window.scrollTo(0,0);
+}
+document.getElementById('nav').onclick = e=>{const v=e.target.dataset.v; if(v){location.hash=v;}};
+window.addEventListener('hashchange',()=>show(location.hash.slice(1)||'cours'));
+
+/* Flashcards */
+let fcI=0, fcFlip=false, fcOrder=[...FC.keys()];
+function flash(){
+  const [f,b]=FC[fcOrder[fcI]];
+  app.innerHTML = `<div class="card"><h2>Flashcards <span class="mute">(${fcI+1}/${FC.length})</span></h2>
+  <p class="mute">Cliquez sur la carte pour la retourner.</p>
+  <div class="card fc" id="fc">${fcFlip?'<b>'+b+'</b>':f}</div>
+  <div class="row"><button class="btn" id="pv">← Précédente</button><button class="btn p" id="nx">Suivante →</button><button class="btn" id="sh">Mélanger</button></div></div>`;
+  fcEl('fc').onclick=()=>{fcFlip=!fcFlip;flash()};
+  fcEl('pv').onclick=()=>{fcI=(fcI-1+FC.length)%FC.length;fcFlip=false;flash()};
+  fcEl('nx').onclick=()=>{fcI=(fcI+1)%FC.length;fcFlip=false;flash()};
+  fcEl('sh').onclick=()=>{fcOrder=shuffle([...FC.keys()]);fcI=0;fcFlip=false;flash()};
+}
+function fcEl(id){return document.getElementById(id)}
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+
+/* Quiz */
+let S=null;
+function quizHome(){
+  const best=store.get('clf_best',null);
+  const counts=[1,2,3,4].map(d=>Q.filter(q=>q.d===d).length);
+  app.innerHTML=`<div class="card"><h2>Examen blanc</h2>
+  <p>${Q.length} questions de synthèse (+ ${allChQ().length} questions dans les quiz de chapitres). Après chaque réponse : pourquoi votre choix est bon ou mauvais, et pourquoi <b>chaque</b> autre option l’est.</p>
+  <div class="row" style="margin:12px 0"><label>Domaine : <select id="dom">
+    <option value="0">Tous (${Q.length})</option>${[1,2,3,4].map(d=>`<option value="${d}">${d} · ${DN[d]} (${counts[d-1]})</option>`).join('')}
+  </select></label>
+  <label><input type="checkbox" id="onlyMiss"> Seulement mes erreurs passées, examen + chapitres (${store.get('clf_miss',[]).length})</label></div>
+  <button class="btn p" id="go">Commencer</button>
+  ${best!==null?`<p class="mute" style="margin-top:12px">Meilleur score (examen complet) : ${best} %</p>`:''}
+  <div class="tip">Objectif : ≥ 80 % ici avant l’examen réel (la note de passage équivaut à environ 70 %).</div></div>`;
+  fcEl('go').onclick=()=>{
+    const d=+fcEl('dom').value, miss=store.get('clf_miss',[]);
+    const only=fcEl('onlyMiss').checked;
+    let qs=Q.map((q,i)=>({...q,key:'q'+i}));
+    if(only) qs=[...qs,...allChQ()].filter(q=>miss.includes(q.key));
+    qs=qs.filter(q=>!d||q.d===d);
+    if(!qs.length){fcEl('go').insertAdjacentHTML('afterend',' <span class="mute">Aucune question ne correspond.</span>');return}
+    S={qs:shuffle(qs),i:0,sel:[],done:false,res:[],full:!d&&!only};
+    ask();
+  };
+}
+function ask(){
+  const q=S.qs[S.i], qi=q.key, multi=q.a.length>1;
+  const pct=Math.round(S.i/S.qs.length*100);
+  let h=`<div class="card"><div class="row" style="justify-content:space-between"><span class="pill">${q.ch?'Chapitre '+q.ch+' · ':''}Domaine ${q.d} · ${DN[q.d]}</span><span class="mute">Question ${S.i+1} / ${S.qs.length}</span></div>
+  <div class="bar"><i style="width:${pct}%"></i></div>
+  <p style="font-size:1.05rem"><b>${q.q}</b></p>${multi?'<p class="mute">Choisissez '+q.a.length+' réponses.</p>':''}`;
+  q.o.forEach((o,k)=>{
+    let cls='opt';
+    if(S.done){ if(q.a.includes(k)) cls+=' good'; else if(S.sel.includes(k)) cls+=' bad'; }
+    else if(S.sel.includes(k)) cls+=' sel';
+    const L=String.fromCharCode(65+k);
+    h+=`<button class="${cls}" data-k="${k}"><b>${L}.</b> ${o}`;
+    if(S.done){
+      const ok=q.a.includes(k), picked=S.sel.includes(k);
+      h+=`<div class="ex">${ok?'<b class="g">✓ Bonne réponse'+(picked?' (vous l’avez choisie)':' (vous ne l’avez pas choisie)')+'</b>':'<b class="r">✗ Incorrecte'+(picked?' (votre choix)':'')+'</b>'} — ${q.e[k]}</div>`;
+    }
+    h+=`</button>`;
+  });
+  if(S.done){
+    const good=S.res[S.res.length-1];
+    h+=`<div class="verdict ${good?'g':'r'}">${good?'Bravo, c’est juste !':'Pas tout à fait. Bonne(s) réponse(s) : '+q.a.map(k=>String.fromCharCode(65+k)).join(' et ')}</div>
+    <p class="mute">À revoir : ${q.ch?'<a href="#ch-'+q.ch+'">chapitre '+q.ch+'</a>':'onglet « '+q.d+' · '+DN[q.d]+' »'}${good?'':' et l’onglet Pièges'}.</p>
+    <div class="row"><button class="btn p" id="next">${S.i+1<S.qs.length?'Question suivante →':'Voir mon résultat'}</button></div>`;
+  } else {
+    h+=`<div class="row" style="margin-top:8px"><button class="btn p" id="val" ${S.sel.length!==q.a.length?'disabled':''}>Valider</button></div>`;
+  }
+  app.innerHTML=h+'</div>';
+  if(!S.done){
+    app.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{
+      const k=+b.dataset.k;
+      if(multi){ S.sel=S.sel.includes(k)?S.sel.filter(x=>x!==k):(S.sel.length<q.a.length?[...S.sel,k]:S.sel); }
+      else S.sel=[k];
+      ask();
+    });
+    fcEl('val').onclick=()=>{
+      const good=S.sel.length===q.a.length&&S.sel.every(k=>q.a.includes(k));
+      S.res.push(good); S.done=true;
+      let miss=store.get('clf_miss',[]);
+      miss=good?miss.filter(x=>x!==qi):[...new Set([...miss,qi])];
+      store.set('clf_miss',miss);
+      ask();
+    };
+  } else {
+    fcEl('next').onclick=()=>{S.i++;S.sel=[];S.done=false; S.i<S.qs.length?ask():result();};
+  }
+  window.scrollTo(0,0);
+}
+function result(){
+  const tot=S.res.filter(Boolean).length, pct=Math.round(tot/S.qs.length*100);
+  if(S.chap){const done=store.get('clf_ch',{}); done[S.chap]=Math.max(done[S.chap]||0,pct); store.set('clf_ch',done);}
+  if(S.full){const b=store.get('clf_best',null); if(b===null||pct>b) store.set('clf_best',pct);}
+  store.set('clf_n',store.get('clf_n',0)+1); syncProg();
+  const byD={};S.qs.forEach((qq,n)=>{const d=qq.d;byD[d]=byD[d]||[0,0];byD[d][1]++;if(S.res[n])byD[d][0]++;});
+  const pass=pct>=80?'Prêt(e) ! Continuez à réviser les erreurs et faites les questions officielles.':pct>=70?'Proche du seuil : retravaillez les domaines les plus faibles ci-dessous.':'Pas encore prêt(e) : relisez les fiches des domaines faibles, puis recommencez.';
+  app.innerHTML=`<div class="card"><h2>Résultat : ${tot} / ${S.qs.length} (${pct} %)</h2>
+  <div class="bar"><i style="width:${pct}%"></i></div><p>${pass}</p>
+  <table><tr><th>Domaine</th><th>Score</th></tr>${Object.keys(byD).sort().map(d=>`<tr><td>${d} · ${DN[d]}</td><td>${byD[d][0]} / ${byD[d][1]} (${Math.round(byD[d][0]/byD[d][1]*100)} %)</td></tr>`).join('')}</table>
+  <div class="row" style="margin-top:12px"><button class="btn p" id="again">Recommencer</button>${S.chap&&S.chap<CH.length?'<a class="btn" href="#ch-'+(S.chap+1)+'">Chapitre suivant →</a>':''}${S.chap?'<a class="btn" href="#cours">Liste des chapitres</a>':''}</div>
+  <p class="mute">Vos erreurs sont mémorisées : cochez « Seulement mes erreurs passées » pour les retravailler.</p></div>`;
+  const ch=S.chap; fcEl('again').onclick=()=>ch?startChapQuiz(ch):quizHome();
+}
+/* ============ TOUTES LES QUESTIONS (une par page) ============ */
+let AQ={src:'all',txt:'',i:0,shown:false,pick:null};
+function allQ(){
+  const L='ABCDEFGH';
+  const bank=[...allChQ().map(q=>({...q,src:'ch'+q.ch,lab:'Chapitre '+q.ch+' · '+CH.find(c=>c.n===q.ch).t})),
+              ...Q.map((q,i)=>({...q,src:'exam',lab:'Examen blanc · Q'+(i+1)}))];
+  const opts=`<option value="all">Toutes (${bank.length})</option><option value="exam">Examen blanc (${Q.length})</option>
+   ${[1,2,3,4].map(d=>`<option value="d${d}">Domaine ${d} · ${DN[d]}</option>`).join('')}
+   ${CH.map(c=>`<option value="ch${c.n}">Chapitre ${c.n} · ${c.t}</option>`).join('')}`;
+  app.innerHTML=`<div class="card"><h2>📝 Toutes les questions, une par page</h2>
+  <p>Les ${bank.length} questions du cours (${allChQ().length} des chapitres + ${Q.length} de l’examen blanc). Clique sur une option pour répondre : la bonne réponse et l’explication de <b>chaque</b> option s’affichent. Ensuite, passe à la suivante.</p>
+  <div class="row"><select id="aqs" class="btn">${opts}</select>
+  <input id="aqt" class="btn" placeholder="Rechercher (ex. S3, IAM, Multi-AZ)…" style="flex:1;min-width:200px"></div></div>
+  <div class="card" id="aql"></div>`;
+  const sel=fcEl('aqs'),txt=fcEl('aqt');
+  sel.value=AQ.src; txt.value=AQ.txt;
+  let list=[];
+  const filt=()=>{const t=AQ.txt.trim().toLowerCase();
+    list=bank.filter(q=>(AQ.src==='all'||q.src===AQ.src||(AQ.src[0]==='d'&&'d'+q.d===AQ.src))
+      &&(!t||(q.q+' '+q.o.join(' ')+' '+q.e.join(' ')).toLowerCase().includes(t)));
+    if(AQ.i>=list.length) AQ.i=0;};
+  const go=i=>{AQ.i=Math.max(0,Math.min(list.length-1,i));AQ.shown=false;AQ.pick=null;draw();window.scrollTo(0,0);};
+  const draw=()=>{
+    const box=fcEl('aql');
+    if(!list.length){box.innerHTML='<p>Aucune question ne correspond.</p>';return}
+    const q=list[AQ.i], sh=AQ.shown, pct=Math.round((AQ.i+1)/list.length*100);
+    box.innerHTML=`<div class="row" style="justify-content:space-between"><span class="pill">${q.lab} · Domaine ${q.d}</span><span class="mute">Question ${AQ.i+1} / ${list.length}</span></div>
+      <div class="bar"><i style="width:${pct}%"></i></div>
+      <p style="font-size:1.08rem"><b>${q.q}</b>${q.a.length>1?' <span class="mute">('+q.a.length+' réponses)</span>':''}</p>
+      ${q.o.map((o,k)=>{let c='opt';if(sh){if(q.a.includes(k))c+=' good';else if(AQ.pick===k)c+=' bad';}
+        return `<button class="${c}" data-k="${k}"><b>${L[k]}.</b> ${o}${sh?`<div class="ex">${q.a.includes(k)?'<b class="g">✓ Correcte</b>':'<b class="r">✗ Incorrecte</b>'} — ${q.e[k]}</div>`:''}</button>`}).join('')}
+      ${sh&&AQ.pick!==null?`<p class="verdict ${q.a.includes(AQ.pick)?'g':'r'}">${q.a.includes(AQ.pick)?'✓ Bravo, bonne réponse !':'✗ Pas tout à fait. Bonne réponse : '+q.a.map(k=>L[k]).join(' + ')}</p>`:''}
+      <div class="row" style="margin-top:12px">
+      <button class="btn" id="aqp" ${AQ.i===0?'disabled':''}>← Précédente</button>
+      ${sh?'':'<button class="btn" id="aqv">Voir la réponse</button>'}
+      <button class="btn p" id="aqn" ${AQ.i>=list.length-1?'disabled':''}>Suivante →</button>
+      <span class="mute">Aller à : <input id="aqg" type="number" min="1" max="${list.length}" value="${AQ.i+1}" class="btn" style="width:80px;padding:5px"></span></div>
+      <p class="mute">Astuce clavier : ← et → pour changer de question.</p>`;
+    box.querySelectorAll('.opt').forEach(bt=>bt.onclick=()=>{if(AQ.shown)return;AQ.pick=+bt.dataset.k;AQ.shown=true;draw();});
+    fcEl('aqp').onclick=()=>go(AQ.i-1); fcEl('aqn').onclick=()=>go(AQ.i+1);
+    if(fcEl('aqv')) fcEl('aqv').onclick=()=>{AQ.shown=true;draw();};
+    fcEl('aqg').onchange=e=>go((+e.target.value||1)-1);
+  };
+  sel.onchange=()=>{AQ.src=sel.value;AQ.i=0;AQ.shown=false;AQ.pick=null;filt();draw();};
+  txt.oninput=()=>{AQ.txt=txt.value;AQ.i=0;AQ.shown=false;AQ.pick=null;filt();draw();};
+  document.onkeydown=e=>{if(location.hash!=='#toutes'||/INPUT|SELECT/.test(e.target.tagName))return;
+    if(e.key==='ArrowRight')go(AQ.i+1); else if(e.key==='ArrowLeft')go(AQ.i-1);};
+  filt(); draw();
+}
+/* ============ PROGRESSION PARTAGÉE ============ */
+const esc=t=>String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let DB=null, USR=null, ME=null, TEAM=[], PROF={}, tState='load', tNote='', canWrite=true, wBusy=false, wAgain=false;
+function myProg(){return {ch:store.get('clf_ch',{}),best:store.get('clf_best',null),miss:store.get('clf_miss',[]).length,n:store.get('clf_n',0),upd:Date.now()}}
+async function syncProg(){
+  if(!DB||!ME||!canWrite) return;
+  if(wBusy){wAgain=true;return}
+  wBusy=true;
+  try{await DB.doc('progress/'+ME).set(myProg())}
+  catch(e){ if(e&&e.code==='invalid_argument'){canWrite=false; tNote='ro';} else if(e&&e.code==='unavailable'){setTimeout(syncProg,1500+Math.random()*2000)} console.log('[clf] sync',e&&e.code); }
+  wBusy=false;
+  if(wAgain){wAgain=false;syncProg()}
+  if(location.hash==='#equipe') team();
+}
+function num(x){x=Number(x);return isFinite(x)?Math.max(0,Math.min(100,Math.round(x))):null}
+function clean(d){const ch={};const src=(d&&typeof d.ch==='object'&&d.ch)||{};for(let i=1;i<=CH.length;i++){const v=num(src[i]);if(v!==null&&src[i]!==undefined)ch[i]=v}
+  return {ch,best:d&&d.best!=null?num(d.best):null,miss:Math.max(0,Number(d&&d.miss)||0),n:Math.max(0,Number(d&&d.n)||0),upd:Number(d&&d.upd)||0}}
+(async()=>{
+  try{DB=await claude.use('db'); USR=await claude.use('user');}catch(e){}
+  if(!DB||!USR){tState='off'; if(location.hash==='#equipe') team(); return}
+  try{ME=await USR.id()}catch(e){}
+  if(!ME){tState='off'; if(location.hash==='#equipe') team(); return}
+  try{ if(USR.can){const c=await USR.can('data.write'); if(c===false){canWrite=false; tNote='ro';}} }catch(e){}
+  // récupère ma progression enregistrée (autre appareil) et fusionne avec ce navigateur
+  try{
+    const snap=await DB.doc('progress/'+ME).get();
+    if(snap.exists){
+      const r=clean(snap.data()), loc=store.get('clf_ch',{});
+      for(const k in r.ch) loc[k]=Math.max(loc[k]||0,r.ch[k]);
+      store.set('clf_ch',loc);
+      const b=store.get('clf_best',null); if(r.best!=null&&(b===null||r.best>b)) store.set('clf_best',r.best);
+      if(r.n>store.get('clf_n',0)) store.set('clf_n',r.n);
+    }
+  }catch(e){}
+  syncProg();
+  const timer=setTimeout(()=>{if(tState==='load'){tState='slow'; if(location.hash==='#equipe') team();}},10000);
+  DB.collection('progress').onSnapshot(async q=>{
+    if(!q.metadata.fromCache) clearTimeout(timer);
+    TEAM=q.docs.filter(d=>d.exists).map(d=>({id:d.id,...clean(d.data())}));
+    tState=q.metadata.fromCache?'cache':'ok';
+    try{PROF=await USR.profiles(TEAM.map(t=>t.id))||{}}catch(e){}
+    const h=location.hash; if(h==='#equipe') team(); else if(h==='#cours'||h==='') coursList();
+  },e=>{clearTimeout(timer); tState='err'; console.log('[clf] snapshot',e&&e.code); if(location.hash==='#equipe') team();});
+})();
+function pname(id){return (PROF[id]&&PROF[id].name)||'Quelqu’un'}
+function cell(v){if(v===undefined) return '<td class="c0">·</td>'; const c=v>=80?'cg':v>=50?'cm':'cb'; return `<td class="${c}">${v}</td>`}
+function team(){
+  if(location.hash!=='#equipe') return;
+  const intro=`<div class="card"><h2>👥 Progression partagée</h2>
+  <p>Chaque personne qui ouvre ce lien voit la progression de tout le monde, <b>en direct</b> : chapitres terminés, score de chaque quiz et meilleur examen blanc. Ta progression s’enregistre toute seule à la fin de chaque quiz.</p>
+  <p class="mute">Vert ≥ 80 % (niveau examen) · orange 50–79 % · rouge &lt; 50 % · « · » = pas encore fait.</p></div>`;
+  if(tState==='off'){app.innerHTML=intro+`<div class="card"><p>⚠️ Le partage n’est pas disponible ici (il faut ouvrir la page sur claude.ai en étant connecté). Ta progression reste enregistrée dans ce navigateur.</p></div>`;return}
+  if(tState==='load'){app.innerHTML=intro+`<div class="card"><p class="mute">Chargement de la progression…</p></div>`;return}
+  let warn='';
+  if(tState==='slow') warn='<p class="mute">⏳ Les données partagées ne répondent pas encore. Réessaie dans un moment.</p>';
+  if(tState==='err') warn='<p class="mute">⚠️ Connexion aux données partagées perdue. Recharge la page.</p>';
+  if(tState==='cache') warn='<p class="mute">Données peut-être pas à jour (mise à jour en cours)…</p>';
+  if(tNote==='ro') warn+='<p class="tip">Tu peux voir la progression des autres, mais <b>la tienne ne peut pas être enregistrée</b> : le propriétaire de la page doit te donner l’accès <b>« Éditeur »</b> dans le menu Partager.</p>';
+  const ppl=[...TEAM].sort((a,b)=>(a.id===ME?-1:b.id===ME?1:Object.keys(b.ch).length-Object.keys(a.ch).length));
+  if(!ppl.length){app.innerHTML=intro+`<div class="card">${warn}<p>Personne n’a encore terminé de quiz. Fais le quiz d’un chapitre pour apparaître ici !</p></div>`;return}
+  const nm=p=>`<span class="${p.id===ME?'me':''}">${esc(pname(p.id))}${p.id===ME?' (moi)':''}</span>`;
+  const summary=ppl.map(p=>{const v=Object.values(p.ch),n=v.length,avg=n?Math.round(v.reduce((a,b)=>a+b,0)/n):0,ok=v.filter(x=>x>=80).length;
+    const when=p.upd?new Date(p.upd).toLocaleString('fr-FR',{dateStyle:'short',timeStyle:'short'}):'–';
+    return `<div class="card" style="margin:0"><h3 style="margin-top:0">${nm(p)}</h3>
+    <div class="bar"><i style="width:${Math.round(n/CH.length*100)}%"></i></div>
+    <p><b>${n} / ${CH.length}</b> chapitres faits · <b>${ok}</b> réussis à ≥ 80 %<br>Moyenne des quiz : <b>${avg} %</b><br>Meilleur examen blanc : <b>${p.best!=null?p.best+' %':'pas encore'}</b><br>Questions à retravailler : ${p.miss} · Quiz terminés : ${p.n}</p>
+    <p class="mute">Dernière activité : ${when}</p></div>`}).join('');
+  const grid=`<div class="tw"><table class="tg"><tr><th>Chapitre</th>${ppl.map(p=>`<th>${nm(p)}</th>`).join('')}</tr>
+  ${CH.map(c=>`<tr><td class="t"><a href="#ch-${c.n}">${c.n}. ${c.t}</a></td>${ppl.map(p=>cell(p.ch[c.n])).join('')}</tr>`).join('')}</table></div>`;
+  app.innerHTML=intro+`<div class="card">${warn}<div class="chl">${summary}</div></div>
+  <div class="card"><h2>Chapitre par chapitre (score du quiz en %)</h2><p class="mute">Astuce : un chapitre vert chez ton ami et rouge chez toi ? Demande-lui de te l’expliquer, et inversement.</p>${grid}</div>`;
+}
+/* Cours par chapitre */
+CH.sort((a,b)=>a.n-b.n);
+/* questions supplémentaires : couverture complète de chaque chapitre */
+function mixQ(q,o,a,e){ /* mélange fixe (même ordre à chaque visite) ; chaque explication suit son option */
+  let h=0;for(const ch of q)h=(h*31+ch.charCodeAt(0))|0;
+  const rnd=()=>{h=(h*1103515245+12345)|0;return ((h>>>16)&0x7fff)/0x8000};
+  const idx=o.map((_,i)=>i);for(let i=idx.length-1;i>0;i--){const j=Math.floor(rnd()*(i+1));[idx[i],idx[j]]=[idx[j],idx[i]]}
+  const tidy=x=>{x=x.replace(/^(Exact|Faux)\s*:\s*/,'');return x.charAt(0).toUpperCase()+x.slice(1)};
+  return {q,o:idx.map(i=>o[i]),e:idx.map(i=>tidy(e[i])),a:a.map(k=>idx.indexOf(k)).sort((x,y)=>x-y)};
+}
+CH.forEach(c=>{const x=(window.QX||{})[c.n]; if(x) c.q=c.q.concat(x.map(([q,o,a,e])=>mixQ(q,o,a,e)));});
+function allChQ(){return CH.flatMap(c=>c.q.map((q,k)=>({...q,d:c.d,ch:c.n,key:'c'+c.n+'-'+k})))}
+function coursList(){
+  const done=store.get('clf_ch',{});
+  const n=Object.keys(done).length;
+  app.innerHTML=`<div class="card"><h2>Cours complet : de zéro à pro</h2>
+  <p>29 chapitres, dans l’ordre de tes vidéos (dossier <code>Downloads\AWS</code>). Chaque chapitre a 3 niveaux :</p>
+  <p>🟢 <b>Niveau zéro</b> : l’idée avec une analogie · 🟡 <b>Niveau examen</b> : ce qu’il faut savoir · 🔴 <b>Niveau pro</b> : détails, pièges et scénarios</p>
+  <p>puis un <b>mini-quiz expliqué</b>. Méthode : vidéo résumé → lecture des 3 niveaux → quiz → chapitre suivant. À la fin : onglet <a href="#quiz">Examen blanc</a>.</p>
+  <div class="bar"><i style="width:${Math.round(n/CH.length*100)}%"></i></div><p class="mute">${n} / ${CH.length} chapitres avec quiz terminé</p></div>
+  <div class="chl">${CH.map(c=>`<a href="#ch-${c.n}"><b>${c.n}.</b> ${c.t}<br><span class="mute">Domaine ${c.d} · ${DN[c.d]}</span> ${done[c.n]!==undefined?'<span class="ok">✓ '+done[c.n]+' %</span>':''}</a>`).join('')}</div>`;
+}
+function chapter(n){
+  const c=CH.find(x=>x.n===n); if(!c){coursList();return}
+  const prev=CH.find(x=>x.n===n-1), next=CH.find(x=>x.n===n+1);
+  app.innerHTML=`<div class="card"><p class="mute"><a href="#cours">← Tous les chapitres</a></p>
+  <h2>Chapitre ${c.n} · ${c.t}</h2>
+  <p><span class="pill">Domaine ${c.d} · ${DN[c.d]}</span> &nbsp;<span class="mute">🎬 Vidéo résumé : <code>${c.v}</code></span></p></div>
+  <div class="card lvl l0"><h2>🟢 Niveau zéro : comprendre l’idée</h2>${c.zero}</div>
+  ${DG[c.n]?'<div class="card"><h2>📐 Schéma'+(DG[c.n].length>1?'s':'')+' explicatif'+(DG[c.n].length>1?'s':'')+'</h2>'+DG[c.n].map(svgDiag).join('')+'</div>':''}
+  <div class="card lvl l1"><h2>🟡 Niveau examen : ce qu’il faut savoir</h2>${c.exam}</div>
+  <div class="card lvl l2"><h2>🔴 Niveau pro : détails, pièges, scénarios</h2>${c.pro}</div>
+  <div class="card"><h2>✅ Vérifie que tu as compris</h2><p>${c.q.length} questions, avec l’explication de chaque option.</p>
+  <div class="row"><button class="btn p" id="cq">Faire le quiz du chapitre</button>
+  ${prev?'<a class="btn" href="#ch-'+prev.n+'">← Ch. '+prev.n+'</a>':''}${next?'<a class="btn" href="#ch-'+next.n+'">Ch. '+next.n+' →</a>':''}</div></div>`;
+  fcEl('cq').onclick=()=>startChapQuiz(n);
+}
+function startChapQuiz(n){
+  S={qs:allChQ().filter(q=>q.ch===n),i:0,sel:[],done:false,res:[],full:false,chap:n};
+  ask();
+}
+show(location.hash.slice(1)||'cours');
+</script>
+</body>
+</html>
